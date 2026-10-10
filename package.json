@@ -1357,6 +1357,7 @@
     ]
   },
   "dependencies": {
+    "@ankhorage/capability": "0.2.1",
     "@ankhorage/contracts": "25.1.0"
   },
   "scripts": {
