@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+### Patch Changes
+
+- 2eb36b3: fix(auth): declare the capability runtime dependency for packed catalog verification
+
 ## 0.1.1
 
 ### Patch Changes
