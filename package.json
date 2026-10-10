@@ -1,6 +1,6 @@
 {
   "name": "@ankhorage/auth",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Provider-neutral authentication ports and capability catalog for Ankhorage applications.",
   "homepage": "https://github.com/ankhorage/auth#readme",
   "bugs": {
