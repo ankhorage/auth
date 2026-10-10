@@ -1,0 +1,1390 @@
+{
+  "name": "@ankhorage/auth",
+  "version": "0.1.0",
+  "description": "Provider-neutral authentication ports and capability catalog for Ankhorage applications.",
+  "homepage": "https://github.com/ankhorage/auth#readme",
+  "bugs": {
+    "url": "https://github.com/ankhorage/auth/issues"
+  },
+  "keywords": [
+    "ankhorage",
+    "authentication",
+    "capabilities",
+    "session"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankhorage/auth.git"
+  },
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src",
+    "package.json",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./capabilities": {
+      "types": "./dist/capabilities/index.d.ts",
+      "import": "./dist/capabilities/index.js",
+      "default": "./dist/capabilities/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "ankh": {
+    "category": "auth",
+    "provider": null,
+    "capabilities": [
+      {
+        "id": "auth.signIn",
+        "owner": "@ankhorage/auth",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "auth",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "input": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "identifier"
+            ],
+            "properties": {
+              "identifier": {
+                "type": "object",
+                "required": [
+                  "kind",
+                  "value"
+                ],
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "email",
+                      "phone",
+                      "username"
+                    ]
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "password": {
+                "type": "string"
+              },
+              "otp": {
+                "type": "string"
+              },
+              "redirectTo": {
+                "type": "string"
+              },
+              "metadata": {
+                "type": "object",
+                "additionalProperties": {}
+              }
+            }
+          }
+        },
+        "output": {
+          "schema": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "ok"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": true
+                  },
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "accessToken",
+                      "user"
+                    ],
+                    "properties": {
+                      "accessToken": {
+                        "type": "string"
+                      },
+                      "refreshToken": {
+                        "type": "string"
+                      },
+                      "expiresAt": {
+                        "type": "number"
+                      },
+                      "tokenType": {
+                        "type": "string"
+                      },
+                      "user": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "phone": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "displayName": {
+                            "type": "string"
+                          },
+                          "avatarUrl": {
+                            "type": "string"
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "additionalProperties": {}
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "ok",
+                  "error"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": false
+                  },
+                  "error": {
+                    "type": "object",
+                    "required": [
+                      "code",
+                      "message"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "cause": {}
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "auth.signUp",
+        "owner": "@ankhorage/auth",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "auth",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "input": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "identifier"
+            ],
+            "properties": {
+              "identifier": {
+                "type": "object",
+                "required": [
+                  "kind",
+                  "value"
+                ],
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "email",
+                      "phone",
+                      "username"
+                    ]
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "password": {
+                "type": "string"
+              },
+              "profile": {
+                "type": "object",
+                "additionalProperties": {}
+              },
+              "redirectTo": {
+                "type": "string"
+              },
+              "metadata": {
+                "type": "object",
+                "additionalProperties": {}
+              }
+            }
+          }
+        },
+        "output": {
+          "schema": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "ok"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": true
+                  },
+                  "data": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "accessToken",
+                          "user"
+                        ],
+                        "properties": {
+                          "accessToken": {
+                            "type": "string"
+                          },
+                          "refreshToken": {
+                            "type": "string"
+                          },
+                          "expiresAt": {
+                            "type": "number"
+                          },
+                          "tokenType": {
+                            "type": "string"
+                          },
+                          "user": {
+                            "type": "object",
+                            "required": [
+                              "id"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "email": {
+                                "type": "string"
+                              },
+                              "phone": {
+                                "type": "string"
+                              },
+                              "username": {
+                                "type": "string"
+                              },
+                              "displayName": {
+                                "type": "string"
+                              },
+                              "avatarUrl": {
+                                "type": "string"
+                              },
+                              "metadata": {
+                                "type": "object",
+                                "additionalProperties": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "phone": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "displayName": {
+                            "type": "string"
+                          },
+                          "avatarUrl": {
+                            "type": "string"
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "additionalProperties": {}
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "ok",
+                  "error"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": false
+                  },
+                  "error": {
+                    "type": "object",
+                    "required": [
+                      "code",
+                      "message"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "cause": {}
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "auth.signOut",
+        "owner": "@ankhorage/auth",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "auth",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "input": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "allDevices": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "output": {
+          "schema": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "ok"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": true
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "ok",
+                  "error"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": false
+                  },
+                  "error": {
+                    "type": "object",
+                    "required": [
+                      "code",
+                      "message"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "cause": {}
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "auth.getSession",
+        "owner": "@ankhorage/auth",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "auth",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "input": {
+          "schema": {
+            "type": "object"
+          }
+        },
+        "output": {
+          "schema": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "ok"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": true
+                  },
+                  "data": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "accessToken",
+                          "user"
+                        ],
+                        "properties": {
+                          "accessToken": {
+                            "type": "string"
+                          },
+                          "refreshToken": {
+                            "type": "string"
+                          },
+                          "expiresAt": {
+                            "type": "number"
+                          },
+                          "tokenType": {
+                            "type": "string"
+                          },
+                          "user": {
+                            "type": "object",
+                            "required": [
+                              "id"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "email": {
+                                "type": "string"
+                              },
+                              "phone": {
+                                "type": "string"
+                              },
+                              "username": {
+                                "type": "string"
+                              },
+                              "displayName": {
+                                "type": "string"
+                              },
+                              "avatarUrl": {
+                                "type": "string"
+                              },
+                              "metadata": {
+                                "type": "object",
+                                "additionalProperties": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "ok",
+                  "error"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": false
+                  },
+                  "error": {
+                    "type": "object",
+                    "required": [
+                      "code",
+                      "message"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "cause": {}
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "auth.refreshSession",
+        "owner": "@ankhorage/auth",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "auth",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "input": {
+          "schema": {
+            "type": "object"
+          }
+        },
+        "output": {
+          "schema": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "ok"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": true
+                  },
+                  "data": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "required": [
+                          "accessToken",
+                          "user"
+                        ],
+                        "properties": {
+                          "accessToken": {
+                            "type": "string"
+                          },
+                          "refreshToken": {
+                            "type": "string"
+                          },
+                          "expiresAt": {
+                            "type": "number"
+                          },
+                          "tokenType": {
+                            "type": "string"
+                          },
+                          "user": {
+                            "type": "object",
+                            "required": [
+                              "id"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "email": {
+                                "type": "string"
+                              },
+                              "phone": {
+                                "type": "string"
+                              },
+                              "username": {
+                                "type": "string"
+                              },
+                              "displayName": {
+                                "type": "string"
+                              },
+                              "avatarUrl": {
+                                "type": "string"
+                              },
+                              "metadata": {
+                                "type": "object",
+                                "additionalProperties": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "ok",
+                  "error"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": false
+                  },
+                  "error": {
+                    "type": "object",
+                    "required": [
+                      "code",
+                      "message"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "cause": {}
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "auth.requestPasswordReset",
+        "owner": "@ankhorage/auth",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "auth",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "input": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "identifier"
+            ],
+            "properties": {
+              "identifier": {
+                "type": "object",
+                "required": [
+                  "kind",
+                  "value"
+                ],
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "email",
+                      "phone",
+                      "username"
+                    ]
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "redirectTo": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "output": {
+          "schema": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "ok"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": true
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "ok",
+                  "error"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": false
+                  },
+                  "error": {
+                    "type": "object",
+                    "required": [
+                      "code",
+                      "message"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "cause": {}
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "auth.verifyOtp",
+        "owner": "@ankhorage/auth",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "auth",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "input": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "identifier",
+              "token"
+            ],
+            "properties": {
+              "identifier": {
+                "type": "object",
+                "required": [
+                  "kind",
+                  "value"
+                ],
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "email",
+                      "phone",
+                      "username"
+                    ]
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "token": {
+                "type": "string"
+              },
+              "redirectTo": {
+                "type": "string"
+              },
+              "metadata": {
+                "type": "object",
+                "additionalProperties": {}
+              }
+            }
+          }
+        },
+        "output": {
+          "schema": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "ok"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": true
+                  },
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "accessToken",
+                      "user"
+                    ],
+                    "properties": {
+                      "accessToken": {
+                        "type": "string"
+                      },
+                      "refreshToken": {
+                        "type": "string"
+                      },
+                      "expiresAt": {
+                        "type": "number"
+                      },
+                      "tokenType": {
+                        "type": "string"
+                      },
+                      "user": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "phone": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "displayName": {
+                            "type": "string"
+                          },
+                          "avatarUrl": {
+                            "type": "string"
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "additionalProperties": {}
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "ok",
+                  "error"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": false
+                  },
+                  "error": {
+                    "type": "object",
+                    "required": [
+                      "code",
+                      "message"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "cause": {}
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "auth.oauth.startAuthorization",
+        "owner": "@ankhorage/auth",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "auth",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "input": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "provider",
+              "redirectUri"
+            ],
+            "properties": {
+              "provider": {
+                "type": "string"
+              },
+              "redirectUri": {
+                "type": "string"
+              },
+              "scopes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "queryParams": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "output": {
+          "schema": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "ok",
+                  "data"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": true
+                  },
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "attemptId",
+                      "provider",
+                      "authorizationUrl",
+                      "redirectUri"
+                    ],
+                    "properties": {
+                      "attemptId": {
+                        "type": "string"
+                      },
+                      "provider": {
+                        "type": "string"
+                      },
+                      "authorizationUrl": {
+                        "type": "string"
+                      },
+                      "redirectUri": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "ok",
+                  "error"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": false
+                  },
+                  "error": {
+                    "type": "object",
+                    "required": [
+                      "code",
+                      "message",
+                      "stage",
+                      "recoverable"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "string",
+                        "enum": [
+                          "oauth_unavailable",
+                          "provider_disabled",
+                          "provider_misconfigured",
+                          "invalid_redirect_uri",
+                          "authorization_failed",
+                          "authorization_attempt_not_found",
+                          "invalid_callback",
+                          "state_mismatch",
+                          "pkce_mismatch",
+                          "callback_already_completed",
+                          "code_exchange_failed",
+                          "network_error",
+                          "session_persistence_failed",
+                          "profile_creation_failed",
+                          "provider_error"
+                        ]
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "cause": {},
+                      "stage": {
+                        "type": "string",
+                        "enum": [
+                          "start",
+                          "transport",
+                          "callback",
+                          "exchange",
+                          "session",
+                          "profile"
+                        ]
+                      },
+                      "provider": {
+                        "type": "string"
+                      },
+                      "recoverable": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "auth.oauth.completeAuthorization",
+        "owner": "@ankhorage/auth",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "auth",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "input": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "attemptId",
+              "response"
+            ],
+            "properties": {
+              "attemptId": {
+                "type": "string"
+              },
+              "response": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "url"
+                    ],
+                    "properties": {
+                      "type": {
+                        "const": "callback"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "reason"
+                    ],
+                    "properties": {
+                      "type": {
+                        "const": "cancelled"
+                      },
+                      "reason": {
+                        "type": "string",
+                        "enum": [
+                          "user_cancelled",
+                          "browser_dismissed"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "error"
+                    ],
+                    "properties": {
+                      "type": {
+                        "const": "error"
+                      },
+                      "error": {
+                        "type": "object",
+                        "required": [
+                          "code",
+                          "message"
+                        ],
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "enum": [
+                              "browser_unavailable",
+                              "transport_failed"
+                            ]
+                          },
+                          "message": {
+                            "type": "string"
+                          },
+                          "cause": {}
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "output": {
+          "schema": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "ok",
+                  "status",
+                  "provider",
+                  "session"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": true
+                  },
+                  "status": {
+                    "const": "authenticated"
+                  },
+                  "provider": {
+                    "type": "string"
+                  },
+                  "session": {
+                    "type": "object",
+                    "required": [
+                      "accessToken",
+                      "user"
+                    ],
+                    "properties": {
+                      "accessToken": {
+                        "type": "string"
+                      },
+                      "refreshToken": {
+                        "type": "string"
+                      },
+                      "expiresAt": {
+                        "type": "number"
+                      },
+                      "tokenType": {
+                        "type": "string"
+                      },
+                      "user": {
+                        "type": "object",
+                        "required": [
+                          "id"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "phone": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "displayName": {
+                            "type": "string"
+                          },
+                          "avatarUrl": {
+                            "type": "string"
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "additionalProperties": {}
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "ok",
+                  "status",
+                  "provider",
+                  "reason"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": false
+                  },
+                  "status": {
+                    "const": "cancelled"
+                  },
+                  "provider": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string",
+                    "enum": [
+                      "user_cancelled",
+                      "browser_dismissed",
+                      "provider_denied"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "ok",
+                  "status",
+                  "error"
+                ],
+                "properties": {
+                  "ok": {
+                    "const": false
+                  },
+                  "status": {
+                    "const": "error"
+                  },
+                  "error": {
+                    "type": "object",
+                    "required": [
+                      "code",
+                      "message",
+                      "stage",
+                      "recoverable"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "string",
+                        "enum": [
+                          "oauth_unavailable",
+                          "provider_disabled",
+                          "provider_misconfigured",
+                          "invalid_redirect_uri",
+                          "authorization_failed",
+                          "authorization_attempt_not_found",
+                          "invalid_callback",
+                          "state_mismatch",
+                          "pkce_mismatch",
+                          "callback_already_completed",
+                          "code_exchange_failed",
+                          "network_error",
+                          "session_persistence_failed",
+                          "profile_creation_failed",
+                          "provider_error"
+                        ]
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "cause": {},
+                      "stage": {
+                        "type": "string",
+                        "enum": [
+                          "start",
+                          "transport",
+                          "callback",
+                          "exchange",
+                          "session",
+                          "profile"
+                        ]
+                      },
+                      "provider": {
+                        "type": "string"
+                      },
+                      "recoverable": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "dependencies": {
+    "@ankhorage/contracts": "25.1.0"
+  },
+  "scripts": {
+    "build": "bun run package:sync && tsc -p tsconfig.build.json",
+    "check-types": "tsc --noEmit -p tsconfig.json",
+    "changeset": "ankhorage-changeset",
+    "changeset:status": "ankhorage-changeset status --since=origin/main",
+    "docs": "paradox",
+    "doctor": "ankhorage-doctor validate .",
+    "lint": "ankhorage-eslint . --max-warnings=0",
+    "lint:fix": "ankhorage-eslint . --fix --max-warnings=0",
+    "format": "ankhorage-prettier --write .",
+    "format:check": "ankhorage-prettier --check .",
+    "knip:check": "ankhorage-knip",
+    "package:sync": "bun scripts/materializePackageCapabilities.ts",
+    "prepack": "bun run build",
+    "test": "bun test",
+    "test:packed": "bun run build && bun test tests/packedConsumer.test.ts",
+    "typecheck": "bun run check-types",
+    "version-packages": "ankhorage-changeset version"
+  },
+  "devDependencies": {
+    "@ankhorage/devtools": "^2.3.14",
+    "@ankhorage/doctor": "0.14.13",
+    "@ankhorage/paradox": "^0.3.3",
+    "@types/bun": "^1.4.2",
+    "@types/node": "^26.6.5",
+    "typescript": "^6.0.3"
+  },
+  "packageManager": "bun@1.4.2"
+}
