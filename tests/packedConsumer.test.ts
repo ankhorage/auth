@@ -1,4 +1,5 @@
-import { mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { createRequire } from 'node:module';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -32,6 +33,19 @@ test('packed fresh consumer imports the root and capabilities entrypoints', asyn
     expect(packedTarball).toBeDefined();
     await writeFile(join(consumerDirectory, 'package.json'), '{"type":"module"}\n');
     await runAsync(['bun', 'add', `./${packedTarball}`], consumerDirectory);
+    const packageManifestPath = join(
+      consumerDirectory,
+      'node_modules',
+      '@ankhorage',
+      'auth',
+      'package.json',
+    );
+    const requireFromAuth = createRequire(packageManifestPath);
+    expect(requireFromAuth.resolve('@ankhorage/capability')).toContain('@ankhorage/capability');
+    const packageManifest = JSON.parse(await readFile(packageManifestPath, 'utf8')) as {
+      readonly dependencies: Readonly<Record<string, string>>;
+    };
+    expect(packageManifest.dependencies['@ankhorage/capability']).toBe('0.2.1');
     await writeFile(
       join(consumerDirectory, 'consumer.ts'),
       `import type { AuthPort } from '@ankhorage/auth';

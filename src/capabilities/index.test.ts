@@ -1,3 +1,4 @@
+import { isCapability } from '@ankhorage/capability';
 import {
   AUTH_EMPTY_INPUT_SCHEMA,
   AUTH_NULLABLE_SESSION_RESULT_SCHEMA,
@@ -22,6 +23,7 @@ import { CAPABILITIES } from './index.js';
 test('publishes only the canonical invocable auth descriptors', () => {
   const capabilities: readonly Capability[] = CAPABILITIES;
 
+  expect(capabilities.every(isCapability)).toBe(true);
   expect(capabilities.map(({ id }) => id)).toEqual([
     'auth.signIn',
     'auth.signUp',
