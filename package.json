@@ -1357,8 +1357,7 @@
     ]
   },
   "dependencies": {
-    "@ankhorage/capability": "0.2.1",
-    "@ankhorage/contracts": "25.1.0"
+    "@ankhorage/contracts": "26.0.0"
   },
   "scripts": {
     "build": "bun run package:sync && tsc -p tsconfig.build.json",
@@ -1380,6 +1379,7 @@
     "version-packages": "ankhorage-changeset version"
   },
   "devDependencies": {
+    "@ankhorage/capability": "0.2.1",
     "@ankhorage/devtools": "^2.3.14",
     "@ankhorage/doctor": "0.14.13",
     "@ankhorage/paradox": "^0.3.3",

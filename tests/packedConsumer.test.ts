@@ -41,11 +41,13 @@ test('packed fresh consumer imports the root and capabilities entrypoints', asyn
       'package.json',
     );
     const requireFromAuth = createRequire(packageManifestPath);
-    expect(requireFromAuth.resolve('@ankhorage/capability')).toContain('@ankhorage/capability');
+    expect(requireFromAuth.resolve('@ankhorage/contracts/auth')).toContain('@ankhorage/contracts');
     const packageManifest = JSON.parse(await readFile(packageManifestPath, 'utf8')) as {
       readonly dependencies: Readonly<Record<string, string>>;
     };
-    expect(packageManifest.dependencies['@ankhorage/capability']).toBe('0.2.1');
+    expect(packageManifest.dependencies).toEqual({
+      '@ankhorage/contracts': '26.0.0',
+    });
     await writeFile(
       join(consumerDirectory, 'consumer.ts'),
       `import type { AuthPort } from '@ankhorage/auth';
