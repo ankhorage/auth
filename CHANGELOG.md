@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3
+
+### Patch Changes
+
+- 6dc7771: Declare the published Contracts 26 capability catalog as the package runtime dependency.
+
 ## 0.1.2
 
 ### Patch Changes
