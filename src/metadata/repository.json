@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "library",
+  "title": "Ankhorage Authentication",
+  "summary": "Defines provider-neutral authentication ports and the authentication capability catalog for independent Ankhorage applications and adapters.",
+  "purpose": "Provide stable authentication operations and boundary types so provider adapters can implement sign-in, sessions, password recovery, OTP, and OAuth without coupling consumers to a specific identity provider.",
+  "domain": "authentication capabilities and provider-neutral ports",
+  "responsibilities": [
+    "Publish the authentication capability catalog for sign-in, sign-up, sign-out, sessions, password recovery, OTP, and OAuth authorization.",
+    "Define the AuthPort boundary implemented by provider-specific authentication adapters.",
+    "Use portable authentication contracts from @ankhorage/contracts/auth at the public package boundary."
+  ],
+  "boundaries": [
+    "Does not implement a concrete identity-provider SDK, session store, or user directory.",
+    "Does not select, configure, or compose provider adapters for an application.",
+    "Does not own application-specific authorization policy or business workflows."
+  ],
+  "audience": [
+    "Application and runtime authors that invoke provider-neutral authentication capabilities.",
+    "Maintainers of provider adapters that implement the AuthPort boundary."
+  ],
+  "useCases": [
+    "Describe a sign-in or sign-up operation independently of the selected identity provider.",
+    "Invoke session, password-reset, OTP, or OAuth authorization flows through a common capability catalog.",
+    "Implement a provider adapter against the public AuthPort and published authentication contracts."
+  ],
+  "architecture": {
+    "role": "Provider-neutral authentication boundary library with an explicit port and capability catalog.",
+    "invariants": [
+      "Concrete provider behavior remains behind adapters rather than in this package.",
+      "Authentication inputs and results use published portable contracts.",
+      "Consumers depend on public package exports rather than provider-specific internals."
+    ]
+  },
+  "constraints": {
+    "limitations": [
+      "Applications must choose and configure a concrete provider adapter separately.",
+      "The package does not persist sessions or credentials."
+    ]
+  }
+}
