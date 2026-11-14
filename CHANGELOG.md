@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4
+
+### Patch Changes
+
+- ce676cc: Add canonical repository metadata for package discovery and documentation.
+
 ## 0.1.3
 
 ### Patch Changes

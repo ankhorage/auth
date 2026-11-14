@@ -1,0 +1,16 @@
+graph TD
+  package__ankhorage_auth["Ankhorage Auth"]
+  entrypoint_src_capabilities_index_ts["src/capabilities/index.ts"]
+  package__ankhorage_auth --> entrypoint_src_capabilities_index_ts
+  entrypoint_src_index_ts["src/index.ts"]
+  package__ankhorage_auth --> entrypoint_src_index_ts
+  module_src_capabilities_index_test_ts["src/capabilities/index.test.ts"]
+  package__ankhorage_auth -.-> module_src_capabilities_index_test_ts
+  module_src_capabilities_index_test_ts --> module_src_capabilities_index_ts
+  module_src_capabilities_index_ts["src/capabilities/index.ts"]
+  module_src_features_auth_ports_authPort_ts["src/features/auth/ports/authPort.ts"]
+  package__ankhorage_auth -.-> module_src_features_auth_ports_authPort_ts
+  module_src_index_test_ts["src/index.test.ts"]
+  package__ankhorage_auth -.-> module_src_index_test_ts
+  module_src_index_test_ts --> module_src_index_ts
+  module_src_index_ts["src/index.ts"]

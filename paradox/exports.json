@@ -1,0 +1,111 @@
+[
+  {
+    "name": "AuthPort",
+    "title": null,
+    "description": "Define the provider-neutral executable authentication boundary.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "type",
+    "modulePath": "src/features/auth/ports/authPort.ts",
+    "sourceLocation": {
+      "filePath": "src/features/auth/ports/authPort.ts",
+      "line": 17,
+      "column": 1
+    },
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "completeAuthorization",
+        "kind": "method",
+        "type": "(input: CompleteOAuthAuthorizationInput) => Promise<AuthOAuthCompletionResult>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "getSession",
+        "kind": "method",
+        "type": "() => Promise<AuthResult<AuthSession | null>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "refreshSession",
+        "kind": "method",
+        "type": "() => Promise<AuthResult<AuthSession | null>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "requestPasswordReset",
+        "kind": "method",
+        "type": "(input: PasswordResetInput) => Promise<AuthResult>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "signIn",
+        "kind": "method",
+        "type": "(input: SignInInput) => Promise<AuthResult<AuthSession>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "signOut",
+        "kind": "method",
+        "type": "(input?: SignOutInput) => Promise<AuthResult>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "signUp",
+        "kind": "method",
+        "type": "(input: SignUpInput) => Promise<AuthResult<AuthSession | AuthUser>>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "startAuthorization",
+        "kind": "method",
+        "type": "(input: StartOAuthAuthorizationInput) => Promise<AuthOAuthStartResult>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "verifyOtp",
+        "kind": "method",
+        "type": "(input: VerifyOtpInput) => Promise<AuthResult<AuthSession>>",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "CAPABILITIES",
+    "title": null,
+    "description": "Define the provider-neutral authentication operations published by this package.",
+    "isReadme": false,
+    "see": [],
+    "security": [],
+    "kind": "value",
+    "modulePath": "src/capabilities/index.ts",
+    "sourceLocation": {
+      "filePath": "src/capabilities/index.ts",
+      "line": 20,
+      "column": 14
+    },
+    "exportPaths": [
+      "src/capabilities/index.ts",
+      "src/index.ts"
+    ],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  }
+]

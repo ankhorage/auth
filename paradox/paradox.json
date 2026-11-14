@@ -1,0 +1,345 @@
+{
+  "packageName": "Ankhorage Auth",
+  "packageId": "@ankhorage/auth",
+  "description": "Provider-neutral authentication ports and capability catalog for Ankhorage.",
+  "collaborators": null,
+  "donation": null,
+  "badges": [
+    {
+      "id": "license",
+      "label": "license",
+      "value": "MIT",
+      "color": "2563eb"
+    },
+    {
+      "id": "npm",
+      "label": "npm",
+      "value": "v0.1.4",
+      "color": "cb3837"
+    },
+    {
+      "id": "runtime",
+      "label": "runtime",
+      "value": "bun",
+      "color": "f59e0b"
+    },
+    {
+      "id": "typescript",
+      "label": "typescript",
+      "value": "strict",
+      "color": "2563eb"
+    },
+    {
+      "id": "eslint",
+      "label": "eslint",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "prettier",
+      "label": "prettier",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "build",
+      "label": "build",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "tests",
+      "label": "tests",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "docs",
+      "label": "paradox",
+      "value": "canonical",
+      "color": "0a7f3f"
+    }
+  ],
+  "usage": {
+    "packageName": "@ankhorage/auth",
+    "command": null
+  },
+  "usageEntries": [],
+  "exampleCount": 0,
+  "findings": [],
+  "config": null,
+  "entrypoints": [
+    "src/capabilities/index.ts",
+    "src/index.ts"
+  ],
+  "modules": [
+    {
+      "path": "src/capabilities/index.test.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/capabilities/index.ts"
+      ],
+      "exports": []
+    },
+    {
+      "path": "src/capabilities/index.ts",
+      "isEntrypoint": true,
+      "dependencies": [],
+      "exports": [
+        "CAPABILITIES"
+      ]
+    },
+    {
+      "path": "src/features/auth/ports/authPort.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "AuthPort"
+      ]
+    },
+    {
+      "path": "src/index.test.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/index.ts"
+      ],
+      "exports": []
+    },
+    {
+      "path": "src/index.ts",
+      "isEntrypoint": true,
+      "dependencies": [],
+      "exports": [
+        "AuthPort",
+        "CAPABILITIES"
+      ]
+    }
+  ],
+  "exports": [
+    {
+      "name": "AuthPort",
+      "title": null,
+      "description": "Define the provider-neutral executable authentication boundary.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/features/auth/ports/authPort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/authPort.ts",
+        "line": 17,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "completeAuthorization",
+          "kind": "method",
+          "type": "(input: CompleteOAuthAuthorizationInput) => Promise<AuthOAuthCompletionResult>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "getSession",
+          "kind": "method",
+          "type": "() => Promise<AuthResult<AuthSession | null>>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "refreshSession",
+          "kind": "method",
+          "type": "() => Promise<AuthResult<AuthSession | null>>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "requestPasswordReset",
+          "kind": "method",
+          "type": "(input: PasswordResetInput) => Promise<AuthResult>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "signIn",
+          "kind": "method",
+          "type": "(input: SignInInput) => Promise<AuthResult<AuthSession>>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "signOut",
+          "kind": "method",
+          "type": "(input?: SignOutInput) => Promise<AuthResult>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "signUp",
+          "kind": "method",
+          "type": "(input: SignUpInput) => Promise<AuthResult<AuthSession | AuthUser>>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "startAuthorization",
+          "kind": "method",
+          "type": "(input: StartOAuthAuthorizationInput) => Promise<AuthOAuthStartResult>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "verifyOtp",
+          "kind": "method",
+          "type": "(input: VerifyOtpInput) => Promise<AuthResult<AuthSession>>",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "CAPABILITIES",
+      "title": null,
+      "description": "Define the provider-neutral authentication operations published by this package.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "value",
+      "modulePath": "src/capabilities/index.ts",
+      "sourceLocation": {
+        "filePath": "src/capabilities/index.ts",
+        "line": 20,
+        "column": 14
+      },
+      "exportPaths": [
+        "src/capabilities/index.ts",
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    }
+  ],
+  "components": [],
+  "sourceFunctions": [],
+  "sequenceScenarios": [],
+  "graphs": {
+    "imports": [
+      {
+        "fromPath": "src/index.test.ts",
+        "toPath": "src/index.ts",
+        "sourcePath": "src/index.test.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/capabilities/index.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
+        "toPath": "src/features/auth/ports/authPort.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/capabilities/index.test.ts",
+        "toPath": "src/capabilities/index.ts",
+        "sourcePath": "src/capabilities/index.test.ts"
+      }
+    ],
+    "calls": [
+      {
+        "fromSymbol": "src/index.test.ts",
+        "toSymbol": "test",
+        "callExpression": "test",
+        "sourcePath": "src/index.test.ts"
+      },
+      {
+        "fromSymbol": "src/index.test.ts",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/index.test.ts"
+      },
+      {
+        "fromSymbol": "src/capabilities/index.test.ts",
+        "toSymbol": "test",
+        "callExpression": "test",
+        "sourcePath": "src/capabilities/index.test.ts"
+      },
+      {
+        "fromSymbol": "src/capabilities/index.test.ts",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/capabilities/index.test.ts"
+      }
+    ],
+    "typeReferences": [
+      {
+        "fromSymbol": "AuthPort",
+        "toType": "AuthOAuthCompletionResult",
+        "sourcePath": "src/features/auth/ports/authPort.ts"
+      },
+      {
+        "fromSymbol": "AuthPort",
+        "toType": "AuthOAuthStartResult",
+        "sourcePath": "src/features/auth/ports/authPort.ts"
+      },
+      {
+        "fromSymbol": "AuthPort",
+        "toType": "AuthResult",
+        "sourcePath": "src/features/auth/ports/authPort.ts"
+      },
+      {
+        "fromSymbol": "AuthPort",
+        "toType": "AuthSession",
+        "sourcePath": "src/features/auth/ports/authPort.ts"
+      },
+      {
+        "fromSymbol": "AuthPort",
+        "toType": "AuthUser",
+        "sourcePath": "src/features/auth/ports/authPort.ts"
+      },
+      {
+        "fromSymbol": "AuthPort",
+        "toType": "CompleteOAuthAuthorizationInput",
+        "sourcePath": "src/features/auth/ports/authPort.ts"
+      },
+      {
+        "fromSymbol": "AuthPort",
+        "toType": "PasswordResetInput",
+        "sourcePath": "src/features/auth/ports/authPort.ts"
+      },
+      {
+        "fromSymbol": "AuthPort",
+        "toType": "SignInInput",
+        "sourcePath": "src/features/auth/ports/authPort.ts"
+      },
+      {
+        "fromSymbol": "AuthPort",
+        "toType": "SignOutInput",
+        "sourcePath": "src/features/auth/ports/authPort.ts"
+      },
+      {
+        "fromSymbol": "AuthPort",
+        "toType": "SignUpInput",
+        "sourcePath": "src/features/auth/ports/authPort.ts"
+      },
+      {
+        "fromSymbol": "AuthPort",
+        "toType": "StartOAuthAuthorizationInput",
+        "sourcePath": "src/features/auth/ports/authPort.ts"
+      },
+      {
+        "fromSymbol": "AuthPort",
+        "toType": "VerifyOtpInput",
+        "sourcePath": "src/features/auth/ports/authPort.ts"
+      }
+    ],
+    "componentComposition": []
+  }
+}
