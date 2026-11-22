@@ -38,6 +38,11 @@
       "import": "./dist/capabilities/index.js",
       "default": "./dist/capabilities/index.js"
     },
+    "./persistence": {
+      "types": "./dist/persistence.d.ts",
+      "import": "./dist/persistence.js",
+      "default": "./dist/persistence.js"
+    },
     "./package.json": "./package.json"
   },
   "publishConfig": {
