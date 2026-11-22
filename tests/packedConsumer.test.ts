@@ -50,13 +50,18 @@ test('packed fresh consumer imports the root and capabilities entrypoints', asyn
     });
     await writeFile(
       join(consumerDirectory, 'consumer.ts'),
-      `import type { AuthPort } from '@ankhorage/auth';
+      `import type { AuthPort, AuthorizationAttemptPersistencePort, SessionPersistencePort } from '@ankhorage/auth';
 import { CAPABILITIES } from '@ankhorage/auth/capabilities';
+import type { DurableSession } from '@ankhorage/auth/persistence';
 import packageManifest from '@ankhorage/auth/package.json' with { type: 'json' };
 
 type ConsumerAuthPort = AuthPort;
+type ConsumerSessionPersistencePort = SessionPersistencePort;
+type ConsumerAuthorizationAttemptPersistencePort = AuthorizationAttemptPersistencePort;
+type ConsumerDurableSession = DurableSession;
 if (CAPABILITIES.length !== 9 || packageManifest.name !== '@ankhorage/auth') throw new Error('public entrypoint failed');
 void (undefined as ConsumerAuthPort | undefined);
+void (undefined as ConsumerSessionPersistencePort | ConsumerAuthorizationAttemptPersistencePort | ConsumerDurableSession | undefined);
 `,
     );
     await runAsync(['bun', 'consumer.ts'], consumerDirectory);

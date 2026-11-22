@@ -8,10 +8,11 @@
   "responsibilities": [
     "Publish the authentication capability catalog for sign-in, sign-up, sign-out, sessions, password recovery, OTP, and OAuth authorization.",
     "Define the AuthPort boundary implemented by provider-specific authentication adapters.",
+    "Define host-supplied durable session and one-time authorization-attempt persistence ports.",
     "Use portable authentication contracts from @ankhorage/contracts/auth at the public package boundary."
   ],
   "boundaries": [
-    "Does not implement a concrete identity-provider SDK, session store, or user directory.",
+    "Does not implement a concrete identity-provider SDK, session store, cryptography provider, or user directory.",
     "Does not select, configure, or compose provider adapters for an application.",
     "Does not own application-specific authorization policy or business workflows."
   ],
@@ -27,7 +28,7 @@
   "architecture": {
     "role": "Provider-neutral authentication boundary library with an explicit port and capability catalog.",
     "invariants": [
-      "Concrete provider behavior remains behind adapters rather than in this package.",
+      "Concrete provider, persistence, and cryptography behavior remains behind host adapters rather than in this package.",
       "Authentication inputs and results use published portable contracts.",
       "Consumers depend on public package exports rather than provider-specific internals."
     ]
@@ -35,7 +36,7 @@
   "constraints": {
     "limitations": [
       "Applications must choose and configure a concrete provider adapter separately.",
-      "The package does not persist sessions or credentials."
+      "The package publishes persistence boundaries but does not persist sessions or credentials itself."
     ]
   }
 }
