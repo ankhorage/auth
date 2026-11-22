@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.1.4",
+      "value": "v0.2.0",
       "color": "cb3837"
     },
     {
@@ -50,8 +50,8 @@
     {
       "id": "tests",
       "label": "tests",
-      "value": "checked",
-      "color": "0a7f3f"
+      "value": "configured",
+      "color": "6f42c1"
     },
     {
       "id": "docs",
@@ -98,6 +98,33 @@
       ]
     },
     {
+      "path": "src/features/auth/ports/persistencePort.test.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/persistence.ts"
+      ],
+      "exports": []
+    },
+    {
+      "path": "src/features/auth/ports/persistencePort.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "AuthorizationAttempt",
+        "AuthorizationAttemptPersistencePort",
+        "ConsumeAuthorizationAttemptResult",
+        "CreateAuthorizationAttemptResult",
+        "CreateSessionResult",
+        "DurableSession",
+        "EncryptedPayload",
+        "ReadSessionResult",
+        "RevokeSessionResult",
+        "RotateSessionResult",
+        "SessionPersistencePort",
+        "SessionSubject"
+      ]
+    },
+    {
       "path": "src/index.test.ts",
       "isEntrypoint": false,
       "dependencies": [
@@ -110,12 +137,137 @@
       "isEntrypoint": true,
       "dependencies": [],
       "exports": [
+        "AuthorizationAttempt",
+        "AuthorizationAttemptPersistencePort",
         "AuthPort",
-        "CAPABILITIES"
+        "CAPABILITIES",
+        "ConsumeAuthorizationAttemptResult",
+        "CreateAuthorizationAttemptResult",
+        "CreateSessionResult",
+        "DurableSession",
+        "EncryptedPayload",
+        "ReadSessionResult",
+        "RevokeSessionResult",
+        "RotateSessionResult",
+        "SessionPersistencePort",
+        "SessionSubject"
+      ]
+    },
+    {
+      "path": "src/persistence.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "AuthorizationAttempt",
+        "AuthorizationAttemptPersistencePort",
+        "ConsumeAuthorizationAttemptResult",
+        "CreateAuthorizationAttemptResult",
+        "CreateSessionResult",
+        "DurableSession",
+        "EncryptedPayload",
+        "ReadSessionResult",
+        "RevokeSessionResult",
+        "RotateSessionResult",
+        "SessionPersistencePort",
+        "SessionSubject"
       ]
     }
   ],
   "exports": [
+    {
+      "name": "AuthorizationAttempt",
+      "title": null,
+      "description": "Represent short-lived callback state encrypted by the host and bound to one browser session.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/features/auth/ports/persistencePort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.ts",
+        "line": 72,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "EncryptedPayload"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "attemptId",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "encryptedPayload",
+          "kind": "property",
+          "type": "EncryptedPayload",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "expiresAt",
+          "kind": "property",
+          "type": "number",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "sessionId",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "AuthorizationAttemptPersistencePort",
+      "title": null,
+      "description": "Define host-supplied one-time authorization-attempt persistence for OAuth callback replay and CSRF protection.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/features/auth/ports/persistencePort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.ts",
+        "line": 94,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "AuthorizationAttempt",
+        "ConsumeAuthorizationAttemptResult",
+        "CreateAuthorizationAttemptResult"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "consume",
+          "kind": "method",
+          "type": "(input: { readonly attemptId: string; readonly sessionId: string; readonly now: number; }) => Promise<ConsumeAuthorizationAttemptResult>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "create",
+          "kind": "method",
+          "type": "(attempt: AuthorizationAttempt) => Promise<CreateAuthorizationAttemptResult>",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
     {
       "name": "AuthPort",
       "title": null,
@@ -224,10 +376,406 @@
       "signatures": [],
       "members": [],
       "structuredRows": []
+    },
+    {
+      "name": "ConsumeAuthorizationAttemptResult",
+      "title": null,
+      "description": "Describe the result of atomically consuming a callback-bound authorization attempt.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/features/auth/ports/persistencePort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.ts",
+        "line": 86,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "CreateAuthorizationAttemptResult",
+      "title": null,
+      "description": "Describe the result of creating a new one-time authorization attempt.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/features/auth/ports/persistencePort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.ts",
+        "line": 80,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "CreateSessionResult",
+      "title": null,
+      "description": "Describe the result of storing a new opaque session identifier.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/features/auth/ports/persistencePort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.ts",
+        "line": 22,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "DurableSession",
+      "title": null,
+      "description": "Represent a durable server-side session whose identifier carries no claims or credentials.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/features/auth/ports/persistencePort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.ts",
+        "line": 13,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "EncryptedPayload",
+        "SessionSubject"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "createdAt",
+          "kind": "property",
+          "type": "number",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "encryptedPayload",
+          "kind": "property",
+          "type": "EncryptedPayload",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "expiresAt",
+          "kind": "property",
+          "type": "number",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "sessionId",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "subject",
+          "kind": "property",
+          "type": "SessionSubject",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "EncryptedPayload",
+      "title": null,
+      "description": "Persist an opaque encrypted value without interpreting, decrypting, or exposing its contents.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/features/auth/ports/persistencePort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.ts",
+        "line": 8,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "ciphertext",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "ReadSessionResult",
+      "title": null,
+      "description": "Describe the result of resolving a session without treating an inactive session as authenticated.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/features/auth/ports/persistencePort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.ts",
+        "line": 28,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "RevokeSessionResult",
+      "title": null,
+      "description": "Describe the result of revoking a session for its exact user and tenant boundary.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/features/auth/ports/persistencePort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.ts",
+        "line": 36,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "RotateSessionResult",
+      "title": null,
+      "description": "Describe the result of atomically replacing one session identifier with another.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/features/auth/ports/persistencePort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.ts",
+        "line": 45,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "SessionPersistencePort",
+      "title": null,
+      "description": "Define host-supplied durable session storage; rotation commits replacement creation and prior-session revocation together.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/features/auth/ports/persistencePort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.ts",
+        "line": 55,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "CreateSessionResult",
+        "DurableSession",
+        "ReadSessionResult",
+        "RevokeSessionResult",
+        "RotateSessionResult",
+        "SessionSubject"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "create",
+          "kind": "method",
+          "type": "(session: DurableSession) => Promise<CreateSessionResult>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "read",
+          "kind": "method",
+          "type": "(sessionId: string, now: number) => Promise<ReadSessionResult>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "revoke",
+          "kind": "method",
+          "type": "(input: { readonly sessionId: string; readonly subject: SessionSubject; readonly now: number; }) => Promise<RevokeSessionResult>",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "rotate",
+          "kind": "method",
+          "type": "(input: { readonly replacedSessionId: string; readonly replacement: DurableSession; readonly subject: SessionSubject; readonly now: number; }) => Promise<RotateSessionResult>",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "SessionSubject",
+      "title": null,
+      "description": "Identify a principal whose sessions must remain isolated from every other user and tenant.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/features/auth/ports/persistencePort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.ts",
+        "line": 2,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "tenantId",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "userId",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
     }
   ],
   "components": [],
-  "sourceFunctions": [],
+  "sourceFunctions": [
+    {
+      "name": "createPersistenceFixture",
+      "description": "Exercise the published contract with a test-only adapter; production hosts must supply durable storage.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.test.ts",
+        "line": 18,
+        "column": 7
+      }
+    },
+    {
+      "name": "readSession",
+      "description": "Resolve a session fixture using the active-session semantics required by the public port.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.test.ts",
+        "line": 50,
+        "column": 7
+      }
+    },
+    {
+      "name": "revokeSession",
+      "description": "Revoke exactly the session owned by the requested user and tenant fixture.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.test.ts",
+        "line": 64,
+        "column": 7
+      }
+    },
+    {
+      "name": "rotateSession",
+      "description": "Replace an active owned session in one fixture operation, never leaving both identifiers usable.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.test.ts",
+        "line": 80,
+        "column": 7
+      }
+    },
+    {
+      "name": "consumeAttempt",
+      "description": "Consume an unexpired attempt only when the callback presents its originating session identifier.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.test.ts",
+        "line": 100,
+        "column": 7
+      }
+    },
+    {
+      "name": "isSameSubject",
+      "description": "Compare user and optional tenant identity without accepting cross-tenant sessions.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.test.ts",
+        "line": 118,
+        "column": 7
+      }
+    },
+    {
+      "name": "createSession",
+      "description": "Create deterministic server-only fixture data without modeling credentials or provider tokens.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/persistencePort.test.ts",
+        "line": 122,
+        "column": 7
+      }
+    }
+  ],
   "sequenceScenarios": [],
   "graphs": {
     "imports": [
@@ -247,9 +795,24 @@
         "sourcePath": "src/index.ts"
       },
       {
+        "fromPath": "src/index.ts",
+        "toPath": "src/persistence.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/persistence.ts",
+        "toPath": "src/features/auth/ports/persistencePort.ts",
+        "sourcePath": "src/persistence.ts"
+      },
+      {
         "fromPath": "src/capabilities/index.test.ts",
         "toPath": "src/capabilities/index.ts",
         "sourcePath": "src/capabilities/index.test.ts"
+      },
+      {
+        "fromPath": "src/features/auth/ports/persistencePort.test.ts",
+        "toPath": "src/persistence.ts",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
       }
     ],
     "calls": [
@@ -276,6 +839,108 @@
         "toSymbol": "expect",
         "callExpression": "expect",
         "sourcePath": "src/capabilities/index.test.ts"
+      },
+      {
+        "fromSymbol": "read",
+        "toSymbol": "readSession",
+        "callExpression": "readSession",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "revoke",
+        "toSymbol": "revokeSession",
+        "callExpression": "revokeSession",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "rotate",
+        "toSymbol": "rotateSession",
+        "callExpression": "rotateSession",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "consume",
+        "toSymbol": "consumeAttempt",
+        "callExpression": "consumeAttempt",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "revokeSession",
+        "toSymbol": "readSession",
+        "callExpression": "readSession",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "revokeSession",
+        "toSymbol": "isSameSubject",
+        "callExpression": "isSameSubject",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "rotateSession",
+        "toSymbol": "readSession",
+        "callExpression": "readSession",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "rotateSession",
+        "toSymbol": "isSameSubject",
+        "callExpression": "isSameSubject",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/auth/ports/persistencePort.test.ts",
+        "toSymbol": "test",
+        "callExpression": "test",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/auth/ports/persistencePort.test.ts",
+        "toSymbol": "createPersistenceFixture",
+        "callExpression": "createPersistenceFixture",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/auth/ports/persistencePort.test.ts",
+        "toSymbol": "createSession",
+        "callExpression": "createSession",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/auth/ports/persistencePort.test.ts",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/auth/ports/persistencePort.test.ts",
+        "toSymbol": "create",
+        "callExpression": "persistence.create",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/auth/ports/persistencePort.test.ts",
+        "toSymbol": "read",
+        "callExpression": "persistence.read",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/auth/ports/persistencePort.test.ts",
+        "toSymbol": "revoke",
+        "callExpression": "persistence.revoke",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/auth/ports/persistencePort.test.ts",
+        "toSymbol": "rotate",
+        "callExpression": "persistence.rotate",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/auth/ports/persistencePort.test.ts",
+        "toSymbol": "consume",
+        "callExpression": "persistence.consume",
+        "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
       }
     ],
     "typeReferences": [
@@ -338,6 +1003,66 @@
         "fromSymbol": "AuthPort",
         "toType": "VerifyOtpInput",
         "sourcePath": "src/features/auth/ports/authPort.ts"
+      },
+      {
+        "fromSymbol": "AuthorizationAttempt",
+        "toType": "EncryptedPayload",
+        "sourcePath": "src/features/auth/ports/persistencePort.ts"
+      },
+      {
+        "fromSymbol": "AuthorizationAttemptPersistencePort",
+        "toType": "AuthorizationAttempt",
+        "sourcePath": "src/features/auth/ports/persistencePort.ts"
+      },
+      {
+        "fromSymbol": "AuthorizationAttemptPersistencePort",
+        "toType": "ConsumeAuthorizationAttemptResult",
+        "sourcePath": "src/features/auth/ports/persistencePort.ts"
+      },
+      {
+        "fromSymbol": "AuthorizationAttemptPersistencePort",
+        "toType": "CreateAuthorizationAttemptResult",
+        "sourcePath": "src/features/auth/ports/persistencePort.ts"
+      },
+      {
+        "fromSymbol": "DurableSession",
+        "toType": "EncryptedPayload",
+        "sourcePath": "src/features/auth/ports/persistencePort.ts"
+      },
+      {
+        "fromSymbol": "DurableSession",
+        "toType": "SessionSubject",
+        "sourcePath": "src/features/auth/ports/persistencePort.ts"
+      },
+      {
+        "fromSymbol": "SessionPersistencePort",
+        "toType": "CreateSessionResult",
+        "sourcePath": "src/features/auth/ports/persistencePort.ts"
+      },
+      {
+        "fromSymbol": "SessionPersistencePort",
+        "toType": "DurableSession",
+        "sourcePath": "src/features/auth/ports/persistencePort.ts"
+      },
+      {
+        "fromSymbol": "SessionPersistencePort",
+        "toType": "ReadSessionResult",
+        "sourcePath": "src/features/auth/ports/persistencePort.ts"
+      },
+      {
+        "fromSymbol": "SessionPersistencePort",
+        "toType": "RevokeSessionResult",
+        "sourcePath": "src/features/auth/ports/persistencePort.ts"
+      },
+      {
+        "fromSymbol": "SessionPersistencePort",
+        "toType": "RotateSessionResult",
+        "sourcePath": "src/features/auth/ports/persistencePort.ts"
+      },
+      {
+        "fromSymbol": "SessionPersistencePort",
+        "toType": "SessionSubject",
+        "sourcePath": "src/features/auth/ports/persistencePort.ts"
       }
     ],
     "componentComposition": []

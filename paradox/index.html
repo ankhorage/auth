@@ -126,7 +126,12 @@
                 <small>Overview, CLI, public API, diagrams</small>
               </button>
             </li>
-            
+            <li>
+    <button class="nav-button" type="button" data-target="src/features/auth/ports/persistencePort.test.ts">
+      src/features/auth/ports/persistencePort.test.ts
+      <small>7 functions</small>
+    </button>
+  </li>
           </ul>
         </nav>
       </aside>
@@ -136,9 +141,9 @@
     <section class="panel">
       <h2>Package overview</h2>
       <div class="summary">
-        <div><strong>2</strong><span class="muted">public exports</span></div>
+        <div><strong>14</strong><span class="muted">public exports</span></div>
         <div><strong>0</strong><span class="muted">components</span></div>
-        <div><strong>5</strong><span class="muted">modules</span></div>
+        <div><strong>8</strong><span class="muted">modules</span></div>
         <div><strong>2</strong><span class="muted">entrypoints</span></div>
       </div>
       <h3>Entrypoints</h3>
@@ -165,16 +170,31 @@
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
     <p><strong>Exports:</strong> <code>AuthPort</code></p>
+  </article><article class="item" data-search="src/features/auth/ports/persistencePort.test.ts src/persistence.ts">
+    <h3>src/features/auth/ports/persistencePort.test.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/persistence.ts</code></p>
+    <p><strong>Exports:</strong> <span class="empty">None</span></p>
+  </article><article class="item" data-search="src/features/auth/ports/persistencePort.ts AuthorizationAttempt AuthorizationAttemptPersistencePort ConsumeAuthorizationAttemptResult CreateAuthorizationAttemptResult CreateSessionResult DurableSession EncryptedPayload ReadSessionResult RevokeSessionResult RotateSessionResult SessionPersistencePort SessionSubject">
+    <h3>src/features/auth/ports/persistencePort.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>AuthorizationAttempt</code>, <code>AuthorizationAttemptPersistencePort</code>, <code>ConsumeAuthorizationAttemptResult</code>, <code>CreateAuthorizationAttemptResult</code>, <code>CreateSessionResult</code>, <code>DurableSession</code>, <code>EncryptedPayload</code>, <code>ReadSessionResult</code>, <code>RevokeSessionResult</code>, <code>RotateSessionResult</code>, <code>SessionPersistencePort</code>, <code>SessionSubject</code></p>
   </article><article class="item" data-search="src/index.test.ts src/index.ts">
     <h3>src/index.test.ts</h3>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/index.ts</code></p>
     <p><strong>Exports:</strong> <span class="empty">None</span></p>
-  </article><article class="item" data-search="src/index.ts AuthPort CAPABILITIES">
+  </article><article class="item" data-search="src/index.ts AuthorizationAttempt AuthorizationAttemptPersistencePort AuthPort CAPABILITIES ConsumeAuthorizationAttemptResult CreateAuthorizationAttemptResult CreateSessionResult DurableSession EncryptedPayload ReadSessionResult RevokeSessionResult RotateSessionResult SessionPersistencePort SessionSubject">
     <h3>src/index.ts</h3>
     <p class="muted">Configured entrypoint</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-    <p><strong>Exports:</strong> <code>AuthPort</code>, <code>CAPABILITIES</code></p>
+    <p><strong>Exports:</strong> <code>AuthorizationAttempt</code>, <code>AuthorizationAttemptPersistencePort</code>, <code>AuthPort</code>, <code>CAPABILITIES</code>, <code>ConsumeAuthorizationAttemptResult</code>, <code>CreateAuthorizationAttemptResult</code>, <code>CreateSessionResult</code>, <code>DurableSession</code>, <code>EncryptedPayload</code>, <code>ReadSessionResult</code>, <code>RevokeSessionResult</code>, <code>RotateSessionResult</code>, <code>SessionPersistencePort</code>, <code>SessionSubject</code></p>
+  </article><article class="item" data-search="src/persistence.ts AuthorizationAttempt AuthorizationAttemptPersistencePort ConsumeAuthorizationAttemptResult CreateAuthorizationAttemptResult CreateSessionResult DurableSession EncryptedPayload ReadSessionResult RevokeSessionResult RotateSessionResult SessionPersistencePort SessionSubject">
+    <h3>src/persistence.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>AuthorizationAttempt</code>, <code>AuthorizationAttemptPersistencePort</code>, <code>ConsumeAuthorizationAttemptResult</code>, <code>CreateAuthorizationAttemptResult</code>, <code>CreateSessionResult</code>, <code>DurableSession</code>, <code>EncryptedPayload</code>, <code>ReadSessionResult</code>, <code>RevokeSessionResult</code>, <code>RotateSessionResult</code>, <code>SessionPersistencePort</code>, <code>SessionSubject</code></p>
   </article>
     </section>
     <section class="panel">
@@ -267,6 +287,268 @@
   </table>
   </article>
             </section>
+            <section>
+              <h3>src/features/auth/ports/persistencePort.ts</h3>
+              <article class="item" id="symbol-authorizationattempt" data-search="AuthorizationAttempt  type src/features/auth/ports/persistencePort.ts Represent short-lived callback state encrypted by the host and bound to one browser session. EncryptedPayload">
+    <h4>AuthorizationAttempt</h4>
+    
+    <p class="muted">type • <code>src/features/auth/ports/persistencePort.ts:72:1</code></p>
+    <p>Represent short-lived callback state encrypted by the host and bound to one browser session.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">EncryptedPayload</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>attemptId</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>encryptedPayload</code></td>
+            <td>property</td>
+            <td><code>EncryptedPayload</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>expiresAt</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>sessionId</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article><article class="item" id="symbol-authorizationattemptpersistenceport" data-search="AuthorizationAttemptPersistencePort  type src/features/auth/ports/persistencePort.ts Define host-supplied one-time authorization-attempt persistence for OAuth callback replay and CSRF protection. AuthorizationAttempt ConsumeAuthorizationAttemptResult CreateAuthorizationAttemptResult">
+    <h4>AuthorizationAttemptPersistencePort</h4>
+    
+    <p class="muted">type • <code>src/features/auth/ports/persistencePort.ts:94:1</code></p>
+    <p>Define host-supplied one-time authorization-attempt persistence for OAuth callback replay and CSRF protection.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">AuthorizationAttempt</li><li class="chip">ConsumeAuthorizationAttemptResult</li><li class="chip">CreateAuthorizationAttemptResult</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>consume</code></td>
+            <td>method</td>
+            <td><code>(input: { readonly attemptId: string; readonly sessionId: string; readonly now: number; }) =&gt; Promise&lt;ConsumeAuthorizationAttemptResult&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>create</code></td>
+            <td>method</td>
+            <td><code>(attempt: AuthorizationAttempt) =&gt; Promise&lt;CreateAuthorizationAttemptResult&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article><article class="item" id="symbol-consumeauthorizationattemptresult" data-search="ConsumeAuthorizationAttemptResult  unknown src/features/auth/ports/persistencePort.ts Describe the result of atomically consuming a callback-bound authorization attempt.">
+    <h4>ConsumeAuthorizationAttemptResult</h4>
+    
+    <p class="muted">unknown • <code>src/features/auth/ports/persistencePort.ts:86:1</code></p>
+    <p>Describe the result of atomically consuming a callback-bound authorization attempt.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article><article class="item" id="symbol-createauthorizationattemptresult" data-search="CreateAuthorizationAttemptResult  unknown src/features/auth/ports/persistencePort.ts Describe the result of creating a new one-time authorization attempt.">
+    <h4>CreateAuthorizationAttemptResult</h4>
+    
+    <p class="muted">unknown • <code>src/features/auth/ports/persistencePort.ts:80:1</code></p>
+    <p>Describe the result of creating a new one-time authorization attempt.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article><article class="item" id="symbol-createsessionresult" data-search="CreateSessionResult  unknown src/features/auth/ports/persistencePort.ts Describe the result of storing a new opaque session identifier.">
+    <h4>CreateSessionResult</h4>
+    
+    <p class="muted">unknown • <code>src/features/auth/ports/persistencePort.ts:22:1</code></p>
+    <p>Describe the result of storing a new opaque session identifier.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article><article class="item" id="symbol-durablesession" data-search="DurableSession  type src/features/auth/ports/persistencePort.ts Represent a durable server-side session whose identifier carries no claims or credentials. EncryptedPayload SessionSubject">
+    <h4>DurableSession</h4>
+    
+    <p class="muted">type • <code>src/features/auth/ports/persistencePort.ts:13:1</code></p>
+    <p>Represent a durable server-side session whose identifier carries no claims or credentials.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">EncryptedPayload</li><li class="chip">SessionSubject</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>createdAt</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>encryptedPayload</code></td>
+            <td>property</td>
+            <td><code>EncryptedPayload</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>expiresAt</code></td>
+            <td>property</td>
+            <td><code>number</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>sessionId</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>subject</code></td>
+            <td>property</td>
+            <td><code>SessionSubject</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article><article class="item" id="symbol-encryptedpayload" data-search="EncryptedPayload  type src/features/auth/ports/persistencePort.ts Persist an opaque encrypted value without interpreting, decrypting, or exposing its contents.">
+    <h4>EncryptedPayload</h4>
+    
+    <p class="muted">type • <code>src/features/auth/ports/persistencePort.ts:8:1</code></p>
+    <p>Persist an opaque encrypted value without interpreting, decrypting, or exposing its contents.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>ciphertext</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article><article class="item" id="symbol-readsessionresult" data-search="ReadSessionResult  unknown src/features/auth/ports/persistencePort.ts Describe the result of resolving a session without treating an inactive session as authenticated.">
+    <h4>ReadSessionResult</h4>
+    
+    <p class="muted">unknown • <code>src/features/auth/ports/persistencePort.ts:28:1</code></p>
+    <p>Describe the result of resolving a session without treating an inactive session as authenticated.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article><article class="item" id="symbol-revokesessionresult" data-search="RevokeSessionResult  unknown src/features/auth/ports/persistencePort.ts Describe the result of revoking a session for its exact user and tenant boundary.">
+    <h4>RevokeSessionResult</h4>
+    
+    <p class="muted">unknown • <code>src/features/auth/ports/persistencePort.ts:36:1</code></p>
+    <p>Describe the result of revoking a session for its exact user and tenant boundary.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article><article class="item" id="symbol-rotatesessionresult" data-search="RotateSessionResult  unknown src/features/auth/ports/persistencePort.ts Describe the result of atomically replacing one session identifier with another.">
+    <h4>RotateSessionResult</h4>
+    
+    <p class="muted">unknown • <code>src/features/auth/ports/persistencePort.ts:45:1</code></p>
+    <p>Describe the result of atomically replacing one session identifier with another.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article><article class="item" id="symbol-sessionpersistenceport" data-search="SessionPersistencePort  type src/features/auth/ports/persistencePort.ts Define host-supplied durable session storage; rotation commits replacement creation and prior-session revocation together. CreateSessionResult DurableSession ReadSessionResult RevokeSessionResult RotateSessionResult SessionSubject">
+    <h4>SessionPersistencePort</h4>
+    
+    <p class="muted">type • <code>src/features/auth/ports/persistencePort.ts:55:1</code></p>
+    <p>Define host-supplied durable session storage; rotation commits replacement creation and prior-session revocation together.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">CreateSessionResult</li><li class="chip">DurableSession</li><li class="chip">ReadSessionResult</li><li class="chip">RevokeSessionResult</li><li class="chip">RotateSessionResult</li><li class="chip">SessionSubject</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>create</code></td>
+            <td>method</td>
+            <td><code>(session: DurableSession) =&gt; Promise&lt;CreateSessionResult&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>read</code></td>
+            <td>method</td>
+            <td><code>(sessionId: string, now: number) =&gt; Promise&lt;ReadSessionResult&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>revoke</code></td>
+            <td>method</td>
+            <td><code>(input: { readonly sessionId: string; readonly subject: SessionSubject; readonly now: number; }) =&gt; Promise&lt;RevokeSessionResult&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr><tr>
+            <td><code>rotate</code></td>
+            <td>method</td>
+            <td><code>(input: { readonly replacedSessionId: string; readonly replacement: DurableSession; readonly subject: SessionSubject; readonly now: number; }) =&gt; Promise&lt;RotateSessionResult&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article><article class="item" id="symbol-sessionsubject" data-search="SessionSubject  type src/features/auth/ports/persistencePort.ts Identify a principal whose sessions must remain isolated from every other user and tenant.">
+    <h4>SessionSubject</h4>
+    
+    <p class="muted">type • <code>src/features/auth/ports/persistencePort.ts:2:1</code></p>
+    <p>Identify a principal whose sessions must remain isolated from every other user and tenant.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>tenantId</code></td>
+            <td>property</td>
+            <td><code>string | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>userId</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article>
+            </section>
     </section>
     <section class="panel">
       <h2>Component registry</h2>
@@ -289,10 +571,17 @@
   module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_features_auth_ports_authPort_ts[&quot;src/features/auth/ports/authPort.ts&quot;]
   package__ankhorage_auth -.-&gt; module_src_features_auth_ports_authPort_ts
+  module_src_features_auth_ports_persistencePort_test_ts[&quot;src/features/auth/ports/persistencePort.test.ts&quot;]
+  package__ankhorage_auth -.-&gt; module_src_features_auth_ports_persistencePort_test_ts
+  module_src_features_auth_ports_persistencePort_test_ts --&gt; module_src_persistence_ts
+  module_src_features_auth_ports_persistencePort_ts[&quot;src/features/auth/ports/persistencePort.ts&quot;]
+  package__ankhorage_auth -.-&gt; module_src_features_auth_ports_persistencePort_ts
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   package__ankhorage_auth -.-&gt; module_src_index_test_ts
   module_src_index_test_ts --&gt; module_src_index_ts
   module_src_index_ts[&quot;src/index.ts&quot;]
+  module_src_persistence_ts[&quot;src/persistence.ts&quot;]
+  package__ankhorage_auth -.-&gt; module_src_persistence_ts
 </div>
     <details>
       <summary>View Mermaid source</summary>
@@ -308,10 +597,17 @@
   module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_features_auth_ports_authPort_ts[&quot;src/features/auth/ports/authPort.ts&quot;]
   package__ankhorage_auth -.-&gt; module_src_features_auth_ports_authPort_ts
+  module_src_features_auth_ports_persistencePort_test_ts[&quot;src/features/auth/ports/persistencePort.test.ts&quot;]
+  package__ankhorage_auth -.-&gt; module_src_features_auth_ports_persistencePort_test_ts
+  module_src_features_auth_ports_persistencePort_test_ts --&gt; module_src_persistence_ts
+  module_src_features_auth_ports_persistencePort_ts[&quot;src/features/auth/ports/persistencePort.ts&quot;]
+  package__ankhorage_auth -.-&gt; module_src_features_auth_ports_persistencePort_ts
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   package__ankhorage_auth -.-&gt; module_src_index_test_ts
   module_src_index_test_ts --&gt; module_src_index_ts
   module_src_index_ts[&quot;src/index.ts&quot;]
+  module_src_persistence_ts[&quot;src/persistence.ts&quot;]
+  package__ankhorage_auth -.-&gt; module_src_persistence_ts
 </pre>
     </details>
   </article><article class="item" data-search="Module relationships diagrams/module-relationships.mmd">
@@ -321,9 +617,13 @@
   module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
   module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_features_auth_ports_authPort_ts[&quot;src/features/auth/ports/authPort.ts&quot;]
+  module_src_features_auth_ports_persistencePort_test_ts[&quot;src/features/auth/ports/persistencePort.test.ts&quot;]
+  module_src_features_auth_ports_persistencePort_ts[&quot;src/features/auth/ports/persistencePort.ts&quot;]
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
+  module_src_persistence_ts[&quot;src/persistence.ts&quot;]
   module_src_capabilities_index_test_ts --&gt; module_src_capabilities_index_ts
+  module_src_features_auth_ports_persistencePort_test_ts --&gt; module_src_persistence_ts
   module_src_index_test_ts --&gt; module_src_index_ts
 </div>
     <details>
@@ -332,9 +632,13 @@
   module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
   module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_features_auth_ports_authPort_ts[&quot;src/features/auth/ports/authPort.ts&quot;]
+  module_src_features_auth_ports_persistencePort_test_ts[&quot;src/features/auth/ports/persistencePort.test.ts&quot;]
+  module_src_features_auth_ports_persistencePort_ts[&quot;src/features/auth/ports/persistencePort.ts&quot;]
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
+  module_src_persistence_ts[&quot;src/persistence.ts&quot;]
   module_src_capabilities_index_test_ts --&gt; module_src_capabilities_index_ts
+  module_src_features_auth_ports_persistencePort_test_ts --&gt; module_src_persistence_ts
   module_src_index_test_ts --&gt; module_src_index_ts
 </pre>
     </details>
@@ -345,12 +649,51 @@
   module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
   module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_features_auth_ports_authPort_ts[&quot;src/features/auth/ports/authPort.ts&quot;]
+  module_src_features_auth_ports_persistencePort_test_ts[&quot;src/features/auth/ports/persistencePort.test.ts&quot;]
+  module_src_features_auth_ports_persistencePort_ts[&quot;src/features/auth/ports/persistencePort.ts&quot;]
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
+  module_src_persistence_ts[&quot;src/persistence.ts&quot;]
+  export_AuthorizationAttempt[&quot;AuthorizationAttempt&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_AuthorizationAttempt
+  export_AuthorizationAttempt -.-&gt; export_EncryptedPayload
+  export_AuthorizationAttemptPersistencePort[&quot;AuthorizationAttemptPersistencePort&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_AuthorizationAttemptPersistencePort
+  export_AuthorizationAttemptPersistencePort -.-&gt; export_AuthorizationAttempt
+  export_AuthorizationAttemptPersistencePort -.-&gt; export_ConsumeAuthorizationAttemptResult
+  export_AuthorizationAttemptPersistencePort -.-&gt; export_CreateAuthorizationAttemptResult
   export_AuthPort[&quot;AuthPort&quot;]
   module_src_features_auth_ports_authPort_ts --&gt; export_AuthPort
   export_CAPABILITIES[&quot;CAPABILITIES&quot;]
   module_src_capabilities_index_ts --&gt; export_CAPABILITIES
+  export_ConsumeAuthorizationAttemptResult[&quot;ConsumeAuthorizationAttemptResult&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_ConsumeAuthorizationAttemptResult
+  export_CreateAuthorizationAttemptResult[&quot;CreateAuthorizationAttemptResult&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_CreateAuthorizationAttemptResult
+  export_CreateSessionResult[&quot;CreateSessionResult&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_CreateSessionResult
+  export_DurableSession[&quot;DurableSession&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_DurableSession
+  export_DurableSession -.-&gt; export_EncryptedPayload
+  export_DurableSession -.-&gt; export_SessionSubject
+  export_EncryptedPayload[&quot;EncryptedPayload&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_EncryptedPayload
+  export_ReadSessionResult[&quot;ReadSessionResult&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_ReadSessionResult
+  export_RevokeSessionResult[&quot;RevokeSessionResult&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_RevokeSessionResult
+  export_RotateSessionResult[&quot;RotateSessionResult&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_RotateSessionResult
+  export_SessionPersistencePort[&quot;SessionPersistencePort&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_SessionPersistencePort
+  export_SessionPersistencePort -.-&gt; export_CreateSessionResult
+  export_SessionPersistencePort -.-&gt; export_DurableSession
+  export_SessionPersistencePort -.-&gt; export_ReadSessionResult
+  export_SessionPersistencePort -.-&gt; export_RevokeSessionResult
+  export_SessionPersistencePort -.-&gt; export_RotateSessionResult
+  export_SessionPersistencePort -.-&gt; export_SessionSubject
+  export_SessionSubject[&quot;SessionSubject&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_SessionSubject
 </div>
     <details>
       <summary>View Mermaid source</summary>
@@ -358,18 +701,97 @@
   module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
   module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_features_auth_ports_authPort_ts[&quot;src/features/auth/ports/authPort.ts&quot;]
+  module_src_features_auth_ports_persistencePort_test_ts[&quot;src/features/auth/ports/persistencePort.test.ts&quot;]
+  module_src_features_auth_ports_persistencePort_ts[&quot;src/features/auth/ports/persistencePort.ts&quot;]
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
+  module_src_persistence_ts[&quot;src/persistence.ts&quot;]
+  export_AuthorizationAttempt[&quot;AuthorizationAttempt&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_AuthorizationAttempt
+  export_AuthorizationAttempt -.-&gt; export_EncryptedPayload
+  export_AuthorizationAttemptPersistencePort[&quot;AuthorizationAttemptPersistencePort&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_AuthorizationAttemptPersistencePort
+  export_AuthorizationAttemptPersistencePort -.-&gt; export_AuthorizationAttempt
+  export_AuthorizationAttemptPersistencePort -.-&gt; export_ConsumeAuthorizationAttemptResult
+  export_AuthorizationAttemptPersistencePort -.-&gt; export_CreateAuthorizationAttemptResult
   export_AuthPort[&quot;AuthPort&quot;]
   module_src_features_auth_ports_authPort_ts --&gt; export_AuthPort
   export_CAPABILITIES[&quot;CAPABILITIES&quot;]
   module_src_capabilities_index_ts --&gt; export_CAPABILITIES
+  export_ConsumeAuthorizationAttemptResult[&quot;ConsumeAuthorizationAttemptResult&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_ConsumeAuthorizationAttemptResult
+  export_CreateAuthorizationAttemptResult[&quot;CreateAuthorizationAttemptResult&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_CreateAuthorizationAttemptResult
+  export_CreateSessionResult[&quot;CreateSessionResult&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_CreateSessionResult
+  export_DurableSession[&quot;DurableSession&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_DurableSession
+  export_DurableSession -.-&gt; export_EncryptedPayload
+  export_DurableSession -.-&gt; export_SessionSubject
+  export_EncryptedPayload[&quot;EncryptedPayload&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_EncryptedPayload
+  export_ReadSessionResult[&quot;ReadSessionResult&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_ReadSessionResult
+  export_RevokeSessionResult[&quot;RevokeSessionResult&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_RevokeSessionResult
+  export_RotateSessionResult[&quot;RotateSessionResult&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_RotateSessionResult
+  export_SessionPersistencePort[&quot;SessionPersistencePort&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_SessionPersistencePort
+  export_SessionPersistencePort -.-&gt; export_CreateSessionResult
+  export_SessionPersistencePort -.-&gt; export_DurableSession
+  export_SessionPersistencePort -.-&gt; export_ReadSessionResult
+  export_SessionPersistencePort -.-&gt; export_RevokeSessionResult
+  export_SessionPersistencePort -.-&gt; export_RotateSessionResult
+  export_SessionPersistencePort -.-&gt; export_SessionSubject
+  export_SessionSubject[&quot;SessionSubject&quot;]
+  module_src_features_auth_ports_persistencePort_ts --&gt; export_SessionSubject
 </pre>
     </details>
   </article>
     </section>
         </section>
-        
+        <section id="view-src-features-auth-ports-persistenceport-test-ts" class="view" data-view="src/features/auth/ports/persistencePort.test.ts" hidden>
+    <section class="panel">
+      <h2>src/features/auth/ports/persistencePort.test.ts</h2>
+      <article class="item" data-search="createPersistenceFixture src/features/auth/ports/persistencePort.test.ts Exercise the published contract with a test-only adapter; production hosts must supply durable storage.">
+    <h3>createPersistenceFixture</h3>
+    <p class="muted"><code>src/features/auth/ports/persistencePort.test.ts:18:7</code></p>
+    <p>Exercise the published contract with a test-only adapter; production hosts must supply durable storage.</p>
+    
+  </article><article class="item" data-search="readSession src/features/auth/ports/persistencePort.test.ts Resolve a session fixture using the active-session semantics required by the public port.">
+    <h3>readSession</h3>
+    <p class="muted"><code>src/features/auth/ports/persistencePort.test.ts:50:7</code></p>
+    <p>Resolve a session fixture using the active-session semantics required by the public port.</p>
+    
+  </article><article class="item" data-search="revokeSession src/features/auth/ports/persistencePort.test.ts Revoke exactly the session owned by the requested user and tenant fixture.">
+    <h3>revokeSession</h3>
+    <p class="muted"><code>src/features/auth/ports/persistencePort.test.ts:64:7</code></p>
+    <p>Revoke exactly the session owned by the requested user and tenant fixture.</p>
+    
+  </article><article class="item" data-search="rotateSession src/features/auth/ports/persistencePort.test.ts Replace an active owned session in one fixture operation, never leaving both identifiers usable.">
+    <h3>rotateSession</h3>
+    <p class="muted"><code>src/features/auth/ports/persistencePort.test.ts:80:7</code></p>
+    <p>Replace an active owned session in one fixture operation, never leaving both identifiers usable.</p>
+    
+  </article><article class="item" data-search="consumeAttempt src/features/auth/ports/persistencePort.test.ts Consume an unexpired attempt only when the callback presents its originating session identifier.">
+    <h3>consumeAttempt</h3>
+    <p class="muted"><code>src/features/auth/ports/persistencePort.test.ts:100:7</code></p>
+    <p>Consume an unexpired attempt only when the callback presents its originating session identifier.</p>
+    
+  </article><article class="item" data-search="isSameSubject src/features/auth/ports/persistencePort.test.ts Compare user and optional tenant identity without accepting cross-tenant sessions.">
+    <h3>isSameSubject</h3>
+    <p class="muted"><code>src/features/auth/ports/persistencePort.test.ts:118:7</code></p>
+    <p>Compare user and optional tenant identity without accepting cross-tenant sessions.</p>
+    
+  </article><article class="item" data-search="createSession src/features/auth/ports/persistencePort.test.ts Create deterministic server-only fixture data without modeling credentials or provider tokens.">
+    <h3>createSession</h3>
+    <p class="muted"><code>src/features/auth/ports/persistencePort.test.ts:122:7</code></p>
+    <p>Create deterministic server-only fixture data without modeling credentials or provider tokens.</p>
+    
+  </article>
+    </section>
+  </section>
       </main>
     </div>
     <script>

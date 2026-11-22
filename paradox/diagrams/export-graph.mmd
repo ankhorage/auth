@@ -2,9 +2,48 @@ graph LR
   module_src_capabilities_index_test_ts["src/capabilities/index.test.ts"]
   module_src_capabilities_index_ts["src/capabilities/index.ts"]
   module_src_features_auth_ports_authPort_ts["src/features/auth/ports/authPort.ts"]
+  module_src_features_auth_ports_persistencePort_test_ts["src/features/auth/ports/persistencePort.test.ts"]
+  module_src_features_auth_ports_persistencePort_ts["src/features/auth/ports/persistencePort.ts"]
   module_src_index_test_ts["src/index.test.ts"]
   module_src_index_ts["src/index.ts"]
+  module_src_persistence_ts["src/persistence.ts"]
+  export_AuthorizationAttempt["AuthorizationAttempt"]
+  module_src_features_auth_ports_persistencePort_ts --> export_AuthorizationAttempt
+  export_AuthorizationAttempt -.-> export_EncryptedPayload
+  export_AuthorizationAttemptPersistencePort["AuthorizationAttemptPersistencePort"]
+  module_src_features_auth_ports_persistencePort_ts --> export_AuthorizationAttemptPersistencePort
+  export_AuthorizationAttemptPersistencePort -.-> export_AuthorizationAttempt
+  export_AuthorizationAttemptPersistencePort -.-> export_ConsumeAuthorizationAttemptResult
+  export_AuthorizationAttemptPersistencePort -.-> export_CreateAuthorizationAttemptResult
   export_AuthPort["AuthPort"]
   module_src_features_auth_ports_authPort_ts --> export_AuthPort
   export_CAPABILITIES["CAPABILITIES"]
   module_src_capabilities_index_ts --> export_CAPABILITIES
+  export_ConsumeAuthorizationAttemptResult["ConsumeAuthorizationAttemptResult"]
+  module_src_features_auth_ports_persistencePort_ts --> export_ConsumeAuthorizationAttemptResult
+  export_CreateAuthorizationAttemptResult["CreateAuthorizationAttemptResult"]
+  module_src_features_auth_ports_persistencePort_ts --> export_CreateAuthorizationAttemptResult
+  export_CreateSessionResult["CreateSessionResult"]
+  module_src_features_auth_ports_persistencePort_ts --> export_CreateSessionResult
+  export_DurableSession["DurableSession"]
+  module_src_features_auth_ports_persistencePort_ts --> export_DurableSession
+  export_DurableSession -.-> export_EncryptedPayload
+  export_DurableSession -.-> export_SessionSubject
+  export_EncryptedPayload["EncryptedPayload"]
+  module_src_features_auth_ports_persistencePort_ts --> export_EncryptedPayload
+  export_ReadSessionResult["ReadSessionResult"]
+  module_src_features_auth_ports_persistencePort_ts --> export_ReadSessionResult
+  export_RevokeSessionResult["RevokeSessionResult"]
+  module_src_features_auth_ports_persistencePort_ts --> export_RevokeSessionResult
+  export_RotateSessionResult["RotateSessionResult"]
+  module_src_features_auth_ports_persistencePort_ts --> export_RotateSessionResult
+  export_SessionPersistencePort["SessionPersistencePort"]
+  module_src_features_auth_ports_persistencePort_ts --> export_SessionPersistencePort
+  export_SessionPersistencePort -.-> export_CreateSessionResult
+  export_SessionPersistencePort -.-> export_DurableSession
+  export_SessionPersistencePort -.-> export_ReadSessionResult
+  export_SessionPersistencePort -.-> export_RevokeSessionResult
+  export_SessionPersistencePort -.-> export_RotateSessionResult
+  export_SessionPersistencePort -.-> export_SessionSubject
+  export_SessionSubject["SessionSubject"]
+  module_src_features_auth_ports_persistencePort_ts --> export_SessionSubject
