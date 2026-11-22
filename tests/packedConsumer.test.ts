@@ -17,7 +17,7 @@ const runAsync = async (command: string[], cwd: string): Promise<void> => {
   );
 };
 
-test('packed fresh consumer imports the root and capabilities entrypoints', async () => {
+test('packed fresh consumer imports and type-checks the public entrypoints', async () => {
   const consumerDirectory = await mkdtemp(join(tmpdir(), 'ankhorage-auth-consumer-'));
 
   try {
@@ -33,6 +33,7 @@ test('packed fresh consumer imports the root and capabilities entrypoints', asyn
     expect(packedTarball).toBeDefined();
     await writeFile(join(consumerDirectory, 'package.json'), '{"type":"module"}\n');
     await runAsync(['bun', 'add', `./${packedTarball}`], consumerDirectory);
+    await runAsync(['bun', 'add', '--dev', 'typescript'], consumerDirectory);
     const packageManifestPath = join(
       consumerDirectory,
       'node_modules',
@@ -50,22 +51,90 @@ test('packed fresh consumer imports the root and capabilities entrypoints', asyn
     });
     await writeFile(
       join(consumerDirectory, 'consumer.ts'),
-      `import type { AuthPort, AuthorizationAttemptPersistencePort, SessionPersistencePort } from '@ankhorage/auth';
+      `import type {
+  AuthPort,
+  AuthorizationAttempt,
+  AuthorizationAttemptPersistencePort,
+  ConsumeAuthorizationAttemptResult,
+  CreateAuthorizationAttemptResult,
+  CreateSessionResult,
+  DurableSession,
+  EncryptedPayload,
+  ReadSessionResult,
+  RevokeSessionResult,
+  RotateSessionResult,
+  SessionPersistencePort,
+  SessionSubject,
+} from '@ankhorage/auth';
 import { CAPABILITIES } from '@ankhorage/auth/capabilities';
-import type { DurableSession } from '@ankhorage/auth/persistence';
+import type {
+  AuthorizationAttempt as PersistenceAuthorizationAttempt,
+  AuthorizationAttemptPersistencePort as PersistenceAuthorizationAttemptPersistencePort,
+  ConsumeAuthorizationAttemptResult as PersistenceConsumeAuthorizationAttemptResult,
+  CreateAuthorizationAttemptResult as PersistenceCreateAuthorizationAttemptResult,
+  CreateSessionResult as PersistenceCreateSessionResult,
+  DurableSession as PersistenceDurableSession,
+  EncryptedPayload as PersistenceEncryptedPayload,
+  ReadSessionResult as PersistenceReadSessionResult,
+  RevokeSessionResult as PersistenceRevokeSessionResult,
+  RotateSessionResult as PersistenceRotateSessionResult,
+  SessionPersistencePort as PersistenceSessionPersistencePort,
+  SessionSubject as PersistenceSessionSubject,
+} from '@ankhorage/auth/persistence';
 import packageManifest from '@ankhorage/auth/package.json' with { type: 'json' };
 
 type ConsumerAuthPort = AuthPort;
-type ConsumerSessionPersistencePort = SessionPersistencePort;
-type ConsumerAuthorizationAttemptPersistencePort = AuthorizationAttemptPersistencePort;
-type ConsumerDurableSession = DurableSession;
+type ConsumerRootPersistenceContracts = [
+  AuthorizationAttempt,
+  AuthorizationAttemptPersistencePort,
+  ConsumeAuthorizationAttemptResult,
+  CreateAuthorizationAttemptResult,
+  CreateSessionResult,
+  DurableSession,
+  EncryptedPayload,
+  ReadSessionResult,
+  RevokeSessionResult,
+  RotateSessionResult,
+  SessionPersistencePort,
+  SessionSubject,
+];
+type ConsumerPersistenceEntrypointContracts = [
+  PersistenceAuthorizationAttempt,
+  PersistenceAuthorizationAttemptPersistencePort,
+  PersistenceConsumeAuthorizationAttemptResult,
+  PersistenceCreateAuthorizationAttemptResult,
+  PersistenceCreateSessionResult,
+  PersistenceDurableSession,
+  PersistenceEncryptedPayload,
+  PersistenceReadSessionResult,
+  PersistenceRevokeSessionResult,
+  PersistenceRotateSessionResult,
+  PersistenceSessionPersistencePort,
+  PersistenceSessionSubject,
+];
 if (CAPABILITIES.length !== 9 || packageManifest.name !== '@ankhorage/auth') throw new Error('public entrypoint failed');
 void (undefined as ConsumerAuthPort | undefined);
-void (undefined as ConsumerSessionPersistencePort | ConsumerAuthorizationAttemptPersistencePort | ConsumerDurableSession | undefined);
+void (undefined as ConsumerRootPersistenceContracts | ConsumerPersistenceEntrypointContracts | undefined);
 `,
     );
     await runAsync(['bun', 'consumer.ts'], consumerDirectory);
+    await runAsync(
+      [
+        'bun',
+        'run',
+        'tsc',
+        '--noEmit',
+        '--module',
+        'NodeNext',
+        '--moduleResolution',
+        'NodeNext',
+        '--strict',
+        '--skipLibCheck',
+        'consumer.ts',
+      ],
+      consumerDirectory,
+    );
   } finally {
     await rm(consumerDirectory, { force: true, recursive: true });
   }
-});
+}, 30_000);
