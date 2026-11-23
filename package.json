@@ -1385,7 +1385,7 @@
   },
   "devDependencies": {
     "@ankhorage/capability": "0.2.1",
-    "@ankhorage/devtools": "^2.9.5",
+    "@ankhorage/devtools": "^2.10.9",
     "@ankhorage/doctor": "0.14.13",
     "@ankhorage/paradox": "^0.3.3",
     "@types/bun": "^1.4.2",
