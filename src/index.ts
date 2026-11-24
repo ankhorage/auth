@@ -1,6 +1,13 @@
 export { CAPABILITIES } from './capabilities/index.js';
 export type { AuthPort } from './features/auth/ports/authPort.js';
 export type {
+  ServerCallerAuthenticationFailure,
+  ServerCallerAuthenticationInput,
+  ServerCallerAuthenticationPort,
+  ServerCallerAuthenticationResult,
+  VerifiedCaller,
+} from './features/auth/ports/serverCallerAuthenticationPort.js';
+export type {
   AuthorizationAttempt,
   AuthorizationAttemptPersistencePort,
   ConsumeAuthorizationAttemptResult,

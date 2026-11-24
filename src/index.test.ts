@@ -3,6 +3,7 @@ import { expect, test } from 'bun:test';
 import type {
   AuthorizationAttemptPersistencePort,
   AuthPort,
+  ServerCallerAuthenticationPort,
   SessionPersistencePort,
 } from './index.js';
 import { CAPABILITIES } from './index.js';
@@ -40,6 +41,12 @@ test('publishes no provider implementation from the JavaScript surface', () => {
 
 test('publishes host-owned persistence ports without a provider implementation', () => {
   const ports: readonly (SessionPersistencePort | AuthorizationAttemptPersistencePort)[] = [];
+
+  expect(ports).toEqual([]);
+});
+
+test('publishes the provider-neutral server caller authentication port', () => {
+  const ports: readonly ServerCallerAuthenticationPort[] = [];
 
   expect(ports).toEqual([]);
 });
