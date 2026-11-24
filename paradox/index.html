@@ -131,6 +131,11 @@
       src/features/auth/ports/persistencePort.test.ts
       <small>7 functions</small>
     </button>
+  </li><li>
+    <button class="nav-button" type="button" data-target="src/features/auth/ports/serverCallerAuthenticationPort.test.ts">
+      src/features/auth/ports/serverCallerAuthenticationPort.test.ts
+      <small>2 functions</small>
+    </button>
   </li>
           </ul>
         </nav>
@@ -141,9 +146,9 @@
     <section class="panel">
       <h2>Package overview</h2>
       <div class="summary">
-        <div><strong>14</strong><span class="muted">public exports</span></div>
+        <div><strong>19</strong><span class="muted">public exports</span></div>
         <div><strong>0</strong><span class="muted">components</span></div>
-        <div><strong>8</strong><span class="muted">modules</span></div>
+        <div><strong>10</strong><span class="muted">modules</span></div>
         <div><strong>2</strong><span class="muted">entrypoints</span></div>
       </div>
       <h3>Entrypoints</h3>
@@ -180,16 +185,26 @@
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
     <p><strong>Exports:</strong> <code>AuthorizationAttempt</code>, <code>AuthorizationAttemptPersistencePort</code>, <code>ConsumeAuthorizationAttemptResult</code>, <code>CreateAuthorizationAttemptResult</code>, <code>CreateSessionResult</code>, <code>DurableSession</code>, <code>EncryptedPayload</code>, <code>ReadSessionResult</code>, <code>RevokeSessionResult</code>, <code>RotateSessionResult</code>, <code>SessionPersistencePort</code>, <code>SessionSubject</code></p>
+  </article><article class="item" data-search="src/features/auth/ports/serverCallerAuthenticationPort.test.ts src/features/auth/ports/serverCallerAuthenticationPort.ts">
+    <h3>src/features/auth/ports/serverCallerAuthenticationPort.test.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/features/auth/ports/serverCallerAuthenticationPort.ts</code></p>
+    <p><strong>Exports:</strong> <span class="empty">None</span></p>
+  </article><article class="item" data-search="src/features/auth/ports/serverCallerAuthenticationPort.ts ServerCallerAuthenticationFailure ServerCallerAuthenticationInput ServerCallerAuthenticationPort ServerCallerAuthenticationResult VerifiedCaller">
+    <h3>src/features/auth/ports/serverCallerAuthenticationPort.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>ServerCallerAuthenticationFailure</code>, <code>ServerCallerAuthenticationInput</code>, <code>ServerCallerAuthenticationPort</code>, <code>ServerCallerAuthenticationResult</code>, <code>VerifiedCaller</code></p>
   </article><article class="item" data-search="src/index.test.ts src/index.ts">
     <h3>src/index.test.ts</h3>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <code>src/index.ts</code></p>
     <p><strong>Exports:</strong> <span class="empty">None</span></p>
-  </article><article class="item" data-search="src/index.ts AuthorizationAttempt AuthorizationAttemptPersistencePort AuthPort CAPABILITIES ConsumeAuthorizationAttemptResult CreateAuthorizationAttemptResult CreateSessionResult DurableSession EncryptedPayload ReadSessionResult RevokeSessionResult RotateSessionResult SessionPersistencePort SessionSubject">
+  </article><article class="item" data-search="src/index.ts AuthorizationAttempt AuthorizationAttemptPersistencePort AuthPort CAPABILITIES ConsumeAuthorizationAttemptResult CreateAuthorizationAttemptResult CreateSessionResult DurableSession EncryptedPayload ReadSessionResult RevokeSessionResult RotateSessionResult ServerCallerAuthenticationFailure ServerCallerAuthenticationInput ServerCallerAuthenticationPort ServerCallerAuthenticationResult SessionPersistencePort SessionSubject VerifiedCaller">
     <h3>src/index.ts</h3>
     <p class="muted">Configured entrypoint</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-    <p><strong>Exports:</strong> <code>AuthorizationAttempt</code>, <code>AuthorizationAttemptPersistencePort</code>, <code>AuthPort</code>, <code>CAPABILITIES</code>, <code>ConsumeAuthorizationAttemptResult</code>, <code>CreateAuthorizationAttemptResult</code>, <code>CreateSessionResult</code>, <code>DurableSession</code>, <code>EncryptedPayload</code>, <code>ReadSessionResult</code>, <code>RevokeSessionResult</code>, <code>RotateSessionResult</code>, <code>SessionPersistencePort</code>, <code>SessionSubject</code></p>
+    <p><strong>Exports:</strong> <code>AuthorizationAttempt</code>, <code>AuthorizationAttemptPersistencePort</code>, <code>AuthPort</code>, <code>CAPABILITIES</code>, <code>ConsumeAuthorizationAttemptResult</code>, <code>CreateAuthorizationAttemptResult</code>, <code>CreateSessionResult</code>, <code>DurableSession</code>, <code>EncryptedPayload</code>, <code>ReadSessionResult</code>, <code>RevokeSessionResult</code>, <code>RotateSessionResult</code>, <code>ServerCallerAuthenticationFailure</code>, <code>ServerCallerAuthenticationInput</code>, <code>ServerCallerAuthenticationPort</code>, <code>ServerCallerAuthenticationResult</code>, <code>SessionPersistencePort</code>, <code>SessionSubject</code>, <code>VerifiedCaller</code></p>
   </article><article class="item" data-search="src/persistence.ts AuthorizationAttempt AuthorizationAttemptPersistencePort ConsumeAuthorizationAttemptResult CreateAuthorizationAttemptResult CreateSessionResult DurableSession EncryptedPayload ReadSessionResult RevokeSessionResult RotateSessionResult SessionPersistencePort SessionSubject">
     <h3>src/persistence.ts</h3>
     <p class="muted">Referenced module</p>
@@ -549,6 +564,99 @@
   </table>
   </article>
             </section>
+            <section>
+              <h3>src/features/auth/ports/serverCallerAuthenticationPort.ts</h3>
+              <article class="item" id="symbol-servercallerauthenticationfailure" data-search="ServerCallerAuthenticationFailure  unknown src/features/auth/ports/serverCallerAuthenticationPort.ts Describe an explicit failed server authentication outcome without disclosing credential material.">
+    <h4>ServerCallerAuthenticationFailure</h4>
+    
+    <p class="muted">unknown • <code>src/features/auth/ports/serverCallerAuthenticationPort.ts:13:1</code></p>
+    <p>Describe an explicit failed server authentication outcome without disclosing credential material.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article><article class="item" id="symbol-servercallerauthenticationinput" data-search="ServerCallerAuthenticationInput  type src/features/auth/ports/serverCallerAuthenticationPort.ts Describe opaque credential material extracted by a server transport without coupling verification to that transport.">
+    <h4>ServerCallerAuthenticationInput</h4>
+    
+    <p class="muted">type • <code>src/features/auth/ports/serverCallerAuthenticationPort.ts:2:1</code></p>
+    <p>Describe opaque credential material extracted by a server transport without coupling verification to that transport.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>credential</code></td>
+            <td>property</td>
+            <td><code>string | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article><article class="item" id="symbol-servercallerauthenticationport" data-search="ServerCallerAuthenticationPort  type src/features/auth/ports/serverCallerAuthenticationPort.ts Define the provider-neutral boundary that verifies transport-supplied credentials for a server host. ServerCallerAuthenticationInput ServerCallerAuthenticationResult">
+    <h4>ServerCallerAuthenticationPort</h4>
+    
+    <p class="muted">type • <code>src/features/auth/ports/serverCallerAuthenticationPort.ts:25:1</code></p>
+    <p>Define the provider-neutral boundary that verifies transport-supplied credentials for a server host.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">ServerCallerAuthenticationInput</li><li class="chip">ServerCallerAuthenticationResult</li></ul></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>authenticateCaller</code></td>
+            <td>method</td>
+            <td><code>(input: ServerCallerAuthenticationInput) =&gt; Promise&lt;ServerCallerAuthenticationResult&gt;</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article><article class="item" id="symbol-servercallerauthenticationresult" data-search="ServerCallerAuthenticationResult  unknown src/features/auth/ports/serverCallerAuthenticationPort.ts Describe the trusted result of asking a provider to authenticate one server caller.">
+    <h4>ServerCallerAuthenticationResult</h4>
+    
+    <p class="muted">unknown • <code>src/features/auth/ports/serverCallerAuthenticationPort.ts:20:1</code></p>
+    <p>Describe the trusted result of asking a provider to authenticate one server caller.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    
+  </article><article class="item" id="symbol-verifiedcaller" data-search="VerifiedCaller  type src/features/auth/ports/serverCallerAuthenticationPort.ts Represent the identity and normalized claims that a provider has verified for a server caller.">
+    <h4>VerifiedCaller</h4>
+    
+    <p class="muted">type • <code>src/features/auth/ports/serverCallerAuthenticationPort.ts:7:1</code></p>
+    <p>Represent the identity and normalized claims that a provider has verified for a server caller.</p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>claims</code></td>
+            <td>property</td>
+            <td><code>Readonly&lt;Record&lt;string, string | number | boolean | null&gt;&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr><tr>
+            <td><code>id</code></td>
+            <td>property</td>
+            <td><code>string</code></td>
+            <td>yes</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article>
+            </section>
     </section>
     <section class="panel">
       <h2>Component registry</h2>
@@ -576,6 +684,11 @@
   module_src_features_auth_ports_persistencePort_test_ts --&gt; module_src_persistence_ts
   module_src_features_auth_ports_persistencePort_ts[&quot;src/features/auth/ports/persistencePort.ts&quot;]
   package__ankhorage_auth -.-&gt; module_src_features_auth_ports_persistencePort_ts
+  module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts[&quot;src/features/auth/ports/serverCallerAuthenticationPort.test.ts&quot;]
+  package__ankhorage_auth -.-&gt; module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts
+  module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts --&gt; module_src_features_auth_ports_serverCallerAuthenticationPort_ts
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts[&quot;src/features/auth/ports/serverCallerAuthenticationPort.ts&quot;]
+  package__ankhorage_auth -.-&gt; module_src_features_auth_ports_serverCallerAuthenticationPort_ts
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   package__ankhorage_auth -.-&gt; module_src_index_test_ts
   module_src_index_test_ts --&gt; module_src_index_ts
@@ -602,6 +715,11 @@
   module_src_features_auth_ports_persistencePort_test_ts --&gt; module_src_persistence_ts
   module_src_features_auth_ports_persistencePort_ts[&quot;src/features/auth/ports/persistencePort.ts&quot;]
   package__ankhorage_auth -.-&gt; module_src_features_auth_ports_persistencePort_ts
+  module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts[&quot;src/features/auth/ports/serverCallerAuthenticationPort.test.ts&quot;]
+  package__ankhorage_auth -.-&gt; module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts
+  module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts --&gt; module_src_features_auth_ports_serverCallerAuthenticationPort_ts
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts[&quot;src/features/auth/ports/serverCallerAuthenticationPort.ts&quot;]
+  package__ankhorage_auth -.-&gt; module_src_features_auth_ports_serverCallerAuthenticationPort_ts
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   package__ankhorage_auth -.-&gt; module_src_index_test_ts
   module_src_index_test_ts --&gt; module_src_index_ts
@@ -619,11 +737,14 @@
   module_src_features_auth_ports_authPort_ts[&quot;src/features/auth/ports/authPort.ts&quot;]
   module_src_features_auth_ports_persistencePort_test_ts[&quot;src/features/auth/ports/persistencePort.test.ts&quot;]
   module_src_features_auth_ports_persistencePort_ts[&quot;src/features/auth/ports/persistencePort.ts&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts[&quot;src/features/auth/ports/serverCallerAuthenticationPort.test.ts&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts[&quot;src/features/auth/ports/serverCallerAuthenticationPort.ts&quot;]
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_persistence_ts[&quot;src/persistence.ts&quot;]
   module_src_capabilities_index_test_ts --&gt; module_src_capabilities_index_ts
   module_src_features_auth_ports_persistencePort_test_ts --&gt; module_src_persistence_ts
+  module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts --&gt; module_src_features_auth_ports_serverCallerAuthenticationPort_ts
   module_src_index_test_ts --&gt; module_src_index_ts
 </div>
     <details>
@@ -634,11 +755,14 @@
   module_src_features_auth_ports_authPort_ts[&quot;src/features/auth/ports/authPort.ts&quot;]
   module_src_features_auth_ports_persistencePort_test_ts[&quot;src/features/auth/ports/persistencePort.test.ts&quot;]
   module_src_features_auth_ports_persistencePort_ts[&quot;src/features/auth/ports/persistencePort.ts&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts[&quot;src/features/auth/ports/serverCallerAuthenticationPort.test.ts&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts[&quot;src/features/auth/ports/serverCallerAuthenticationPort.ts&quot;]
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_persistence_ts[&quot;src/persistence.ts&quot;]
   module_src_capabilities_index_test_ts --&gt; module_src_capabilities_index_ts
   module_src_features_auth_ports_persistencePort_test_ts --&gt; module_src_persistence_ts
+  module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts --&gt; module_src_features_auth_ports_serverCallerAuthenticationPort_ts
   module_src_index_test_ts --&gt; module_src_index_ts
 </pre>
     </details>
@@ -651,6 +775,8 @@
   module_src_features_auth_ports_authPort_ts[&quot;src/features/auth/ports/authPort.ts&quot;]
   module_src_features_auth_ports_persistencePort_test_ts[&quot;src/features/auth/ports/persistencePort.test.ts&quot;]
   module_src_features_auth_ports_persistencePort_ts[&quot;src/features/auth/ports/persistencePort.ts&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts[&quot;src/features/auth/ports/serverCallerAuthenticationPort.test.ts&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts[&quot;src/features/auth/ports/serverCallerAuthenticationPort.ts&quot;]
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_persistence_ts[&quot;src/persistence.ts&quot;]
@@ -684,6 +810,16 @@
   module_src_features_auth_ports_persistencePort_ts --&gt; export_RevokeSessionResult
   export_RotateSessionResult[&quot;RotateSessionResult&quot;]
   module_src_features_auth_ports_persistencePort_ts --&gt; export_RotateSessionResult
+  export_ServerCallerAuthenticationFailure[&quot;ServerCallerAuthenticationFailure&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --&gt; export_ServerCallerAuthenticationFailure
+  export_ServerCallerAuthenticationInput[&quot;ServerCallerAuthenticationInput&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --&gt; export_ServerCallerAuthenticationInput
+  export_ServerCallerAuthenticationPort[&quot;ServerCallerAuthenticationPort&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --&gt; export_ServerCallerAuthenticationPort
+  export_ServerCallerAuthenticationPort -.-&gt; export_ServerCallerAuthenticationInput
+  export_ServerCallerAuthenticationPort -.-&gt; export_ServerCallerAuthenticationResult
+  export_ServerCallerAuthenticationResult[&quot;ServerCallerAuthenticationResult&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --&gt; export_ServerCallerAuthenticationResult
   export_SessionPersistencePort[&quot;SessionPersistencePort&quot;]
   module_src_features_auth_ports_persistencePort_ts --&gt; export_SessionPersistencePort
   export_SessionPersistencePort -.-&gt; export_CreateSessionResult
@@ -694,6 +830,8 @@
   export_SessionPersistencePort -.-&gt; export_SessionSubject
   export_SessionSubject[&quot;SessionSubject&quot;]
   module_src_features_auth_ports_persistencePort_ts --&gt; export_SessionSubject
+  export_VerifiedCaller[&quot;VerifiedCaller&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --&gt; export_VerifiedCaller
 </div>
     <details>
       <summary>View Mermaid source</summary>
@@ -703,6 +841,8 @@
   module_src_features_auth_ports_authPort_ts[&quot;src/features/auth/ports/authPort.ts&quot;]
   module_src_features_auth_ports_persistencePort_test_ts[&quot;src/features/auth/ports/persistencePort.test.ts&quot;]
   module_src_features_auth_ports_persistencePort_ts[&quot;src/features/auth/ports/persistencePort.ts&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts[&quot;src/features/auth/ports/serverCallerAuthenticationPort.test.ts&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts[&quot;src/features/auth/ports/serverCallerAuthenticationPort.ts&quot;]
   module_src_index_test_ts[&quot;src/index.test.ts&quot;]
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_persistence_ts[&quot;src/persistence.ts&quot;]
@@ -736,6 +876,16 @@
   module_src_features_auth_ports_persistencePort_ts --&gt; export_RevokeSessionResult
   export_RotateSessionResult[&quot;RotateSessionResult&quot;]
   module_src_features_auth_ports_persistencePort_ts --&gt; export_RotateSessionResult
+  export_ServerCallerAuthenticationFailure[&quot;ServerCallerAuthenticationFailure&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --&gt; export_ServerCallerAuthenticationFailure
+  export_ServerCallerAuthenticationInput[&quot;ServerCallerAuthenticationInput&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --&gt; export_ServerCallerAuthenticationInput
+  export_ServerCallerAuthenticationPort[&quot;ServerCallerAuthenticationPort&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --&gt; export_ServerCallerAuthenticationPort
+  export_ServerCallerAuthenticationPort -.-&gt; export_ServerCallerAuthenticationInput
+  export_ServerCallerAuthenticationPort -.-&gt; export_ServerCallerAuthenticationResult
+  export_ServerCallerAuthenticationResult[&quot;ServerCallerAuthenticationResult&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --&gt; export_ServerCallerAuthenticationResult
   export_SessionPersistencePort[&quot;SessionPersistencePort&quot;]
   module_src_features_auth_ports_persistencePort_ts --&gt; export_SessionPersistencePort
   export_SessionPersistencePort -.-&gt; export_CreateSessionResult
@@ -746,6 +896,8 @@
   export_SessionPersistencePort -.-&gt; export_SessionSubject
   export_SessionSubject[&quot;SessionSubject&quot;]
   module_src_features_auth_ports_persistencePort_ts --&gt; export_SessionSubject
+  export_VerifiedCaller[&quot;VerifiedCaller&quot;]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --&gt; export_VerifiedCaller
 </pre>
     </details>
   </article>
@@ -788,6 +940,21 @@
     <h3>createSession</h3>
     <p class="muted"><code>src/features/auth/ports/persistencePort.test.ts:122:7</code></p>
     <p>Create deterministic server-only fixture data without modeling credentials or provider tokens.</p>
+    
+  </article>
+    </section>
+  </section><section id="view-src-features-auth-ports-servercallerauthenticationport-test-ts" class="view" data-view="src/features/auth/ports/serverCallerAuthenticationPort.test.ts" hidden>
+    <section class="panel">
+      <h2>src/features/auth/ports/serverCallerAuthenticationPort.test.ts</h2>
+      <article class="item" data-search="createVerifier src/features/auth/ports/serverCallerAuthenticationPort.test.ts Create a deterministic provider fixture that models only verified outcomes and stable failures.">
+    <h3>createVerifier</h3>
+    <p class="muted"><code>src/features/auth/ports/serverCallerAuthenticationPort.test.ts:9:7</code></p>
+    <p>Create a deterministic provider fixture that models only verified outcomes and stable failures.</p>
+    
+  </article><article class="item" data-search="resolveCaller src/features/auth/ports/serverCallerAuthenticationPort.test.ts Model provider-owned verification without allowing the server boundary to echo credential material.">
+    <h3>resolveCaller</h3>
+    <p class="muted"><code>src/features/auth/ports/serverCallerAuthenticationPort.test.ts:14:7</code></p>
+    <p>Model provider-owned verification without allowing the server boundary to echo credential material.</p>
     
   </article>
     </section>

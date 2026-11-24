@@ -142,6 +142,50 @@ Source: `src/features/auth/ports/persistencePort.ts:45:1`
 
 Describe the result of atomically replacing one session identifier with another.
 
+## ServerCallerAuthenticationFailure
+
+Kind: `unknown`
+Module: `src/features/auth/ports/serverCallerAuthenticationPort.ts`
+Source: `src/features/auth/ports/serverCallerAuthenticationPort.ts:13:1`
+
+Describe an explicit failed server authentication outcome without disclosing credential material.
+
+## ServerCallerAuthenticationInput
+
+Kind: `type`
+Module: `src/features/auth/ports/serverCallerAuthenticationPort.ts`
+Source: `src/features/auth/ports/serverCallerAuthenticationPort.ts:2:1`
+
+Describe opaque credential material extracted by a server transport without coupling verification to that transport.
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| credential | property | `string \| undefined` | no |  |
+
+## ServerCallerAuthenticationPort
+
+Kind: `type`
+Module: `src/features/auth/ports/serverCallerAuthenticationPort.ts`
+Source: `src/features/auth/ports/serverCallerAuthenticationPort.ts:25:1`
+
+Define the provider-neutral boundary that verifies transport-supplied credentials for a server host.
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| authenticateCaller | method | `(input: ServerCallerAuthenticationInput) => Promise<ServerCallerAuthenticationResult>` | yes |  |
+
+## ServerCallerAuthenticationResult
+
+Kind: `unknown`
+Module: `src/features/auth/ports/serverCallerAuthenticationPort.ts`
+Source: `src/features/auth/ports/serverCallerAuthenticationPort.ts:20:1`
+
+Describe the trusted result of asking a provider to authenticate one server caller.
+
 ## SessionPersistencePort
 
 Kind: `type`
@@ -173,3 +217,18 @@ Identify a principal whose sessions must remain isolated from every other user a
 | --- | --- | --- | --- | --- |
 | tenantId | property | `string \| undefined` | no |  |
 | userId | property | `string` | yes |  |
+
+## VerifiedCaller
+
+Kind: `type`
+Module: `src/features/auth/ports/serverCallerAuthenticationPort.ts`
+Source: `src/features/auth/ports/serverCallerAuthenticationPort.ts:7:1`
+
+Represent the identity and normalized claims that a provider has verified for a server caller.
+
+### Members
+
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| claims | property | `Readonly<Record<string, string \| number \| boolean \| null>> \| undefined` | no |  |
+| id | property | `string` | yes |  |

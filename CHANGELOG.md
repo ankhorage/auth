@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+### Minor Changes
+
+- ce43587: Add a provider-neutral server caller authentication port for verified host identity boundaries.
+
 ## 0.2.0
 
 ### Minor Changes

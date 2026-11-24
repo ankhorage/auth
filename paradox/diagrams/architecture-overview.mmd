@@ -15,6 +15,11 @@ graph TD
   module_src_features_auth_ports_persistencePort_test_ts --> module_src_persistence_ts
   module_src_features_auth_ports_persistencePort_ts["src/features/auth/ports/persistencePort.ts"]
   package__ankhorage_auth -.-> module_src_features_auth_ports_persistencePort_ts
+  module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts["src/features/auth/ports/serverCallerAuthenticationPort.test.ts"]
+  package__ankhorage_auth -.-> module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts
+  module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts --> module_src_features_auth_ports_serverCallerAuthenticationPort_ts
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts["src/features/auth/ports/serverCallerAuthenticationPort.ts"]
+  package__ankhorage_auth -.-> module_src_features_auth_ports_serverCallerAuthenticationPort_ts
   module_src_index_test_ts["src/index.test.ts"]
   package__ankhorage_auth -.-> module_src_index_test_ts
   module_src_index_test_ts --> module_src_index_ts

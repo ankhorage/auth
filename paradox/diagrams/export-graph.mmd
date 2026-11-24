@@ -4,6 +4,8 @@ graph LR
   module_src_features_auth_ports_authPort_ts["src/features/auth/ports/authPort.ts"]
   module_src_features_auth_ports_persistencePort_test_ts["src/features/auth/ports/persistencePort.test.ts"]
   module_src_features_auth_ports_persistencePort_ts["src/features/auth/ports/persistencePort.ts"]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_test_ts["src/features/auth/ports/serverCallerAuthenticationPort.test.ts"]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts["src/features/auth/ports/serverCallerAuthenticationPort.ts"]
   module_src_index_test_ts["src/index.test.ts"]
   module_src_index_ts["src/index.ts"]
   module_src_persistence_ts["src/persistence.ts"]
@@ -37,6 +39,16 @@ graph LR
   module_src_features_auth_ports_persistencePort_ts --> export_RevokeSessionResult
   export_RotateSessionResult["RotateSessionResult"]
   module_src_features_auth_ports_persistencePort_ts --> export_RotateSessionResult
+  export_ServerCallerAuthenticationFailure["ServerCallerAuthenticationFailure"]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --> export_ServerCallerAuthenticationFailure
+  export_ServerCallerAuthenticationInput["ServerCallerAuthenticationInput"]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --> export_ServerCallerAuthenticationInput
+  export_ServerCallerAuthenticationPort["ServerCallerAuthenticationPort"]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --> export_ServerCallerAuthenticationPort
+  export_ServerCallerAuthenticationPort -.-> export_ServerCallerAuthenticationInput
+  export_ServerCallerAuthenticationPort -.-> export_ServerCallerAuthenticationResult
+  export_ServerCallerAuthenticationResult["ServerCallerAuthenticationResult"]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --> export_ServerCallerAuthenticationResult
   export_SessionPersistencePort["SessionPersistencePort"]
   module_src_features_auth_ports_persistencePort_ts --> export_SessionPersistencePort
   export_SessionPersistencePort -.-> export_CreateSessionResult
@@ -47,3 +59,5 @@ graph LR
   export_SessionPersistencePort -.-> export_SessionSubject
   export_SessionSubject["SessionSubject"]
   module_src_features_auth_ports_persistencePort_ts --> export_SessionSubject
+  export_VerifiedCaller["VerifiedCaller"]
+  module_src_features_auth_ports_serverCallerAuthenticationPort_ts --> export_VerifiedCaller

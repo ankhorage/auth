@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.2.0",
+      "value": "v0.3.0",
       "color": "cb3837"
     },
     {
@@ -125,6 +125,26 @@
       ]
     },
     {
+      "path": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/features/auth/ports/serverCallerAuthenticationPort.ts"
+      ],
+      "exports": []
+    },
+    {
+      "path": "src/features/auth/ports/serverCallerAuthenticationPort.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "ServerCallerAuthenticationFailure",
+        "ServerCallerAuthenticationInput",
+        "ServerCallerAuthenticationPort",
+        "ServerCallerAuthenticationResult",
+        "VerifiedCaller"
+      ]
+    },
+    {
       "path": "src/index.test.ts",
       "isEntrypoint": false,
       "dependencies": [
@@ -149,8 +169,13 @@
         "ReadSessionResult",
         "RevokeSessionResult",
         "RotateSessionResult",
+        "ServerCallerAuthenticationFailure",
+        "ServerCallerAuthenticationInput",
+        "ServerCallerAuthenticationPort",
+        "ServerCallerAuthenticationResult",
         "SessionPersistencePort",
-        "SessionSubject"
+        "SessionSubject",
+        "VerifiedCaller"
       ]
     },
     {
@@ -601,6 +626,113 @@
       "structuredRows": []
     },
     {
+      "name": "ServerCallerAuthenticationFailure",
+      "title": null,
+      "description": "Describe an explicit failed server authentication outcome without disclosing credential material.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/features/auth/ports/serverCallerAuthenticationPort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/serverCallerAuthenticationPort.ts",
+        "line": 13,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ServerCallerAuthenticationInput",
+      "title": null,
+      "description": "Describe opaque credential material extracted by a server transport without coupling verification to that transport.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/features/auth/ports/serverCallerAuthenticationPort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/serverCallerAuthenticationPort.ts",
+        "line": 2,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "credential",
+          "kind": "property",
+          "type": "string | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "ServerCallerAuthenticationPort",
+      "title": null,
+      "description": "Define the provider-neutral boundary that verifies transport-supplied credentials for a server host.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/features/auth/ports/serverCallerAuthenticationPort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/serverCallerAuthenticationPort.ts",
+        "line": 25,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "ServerCallerAuthenticationInput",
+        "ServerCallerAuthenticationResult"
+      ],
+      "signatures": [],
+      "members": [
+        {
+          "name": "authenticateCaller",
+          "kind": "method",
+          "type": "(input: ServerCallerAuthenticationInput) => Promise<ServerCallerAuthenticationResult>",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    },
+    {
+      "name": "ServerCallerAuthenticationResult",
+      "title": null,
+      "description": "Describe the trusted result of asking a provider to authenticate one server caller.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "unknown",
+      "modulePath": "src/features/auth/ports/serverCallerAuthenticationPort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/serverCallerAuthenticationPort.ts",
+        "line": 20,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "SessionPersistencePort",
       "title": null,
       "description": "Define host-supplied durable session storage; rotation commits replacement creation and prior-session revocation together.",
@@ -694,6 +826,43 @@
         }
       ],
       "structuredRows": []
+    },
+    {
+      "name": "VerifiedCaller",
+      "title": null,
+      "description": "Represent the identity and normalized claims that a provider has verified for a server caller.",
+      "isReadme": false,
+      "see": [],
+      "security": [],
+      "kind": "type",
+      "modulePath": "src/features/auth/ports/serverCallerAuthenticationPort.ts",
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/serverCallerAuthenticationPort.ts",
+        "line": 7,
+        "column": 1
+      },
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "claims",
+          "kind": "property",
+          "type": "Readonly<Record<string, string | number | boolean | null>> | undefined",
+          "required": false,
+          "description": null
+        },
+        {
+          "name": "id",
+          "kind": "property",
+          "type": "string",
+          "required": true,
+          "description": null
+        }
+      ],
+      "structuredRows": []
     }
   ],
   "components": [],
@@ -774,6 +943,28 @@
         "line": 122,
         "column": 7
       }
+    },
+    {
+      "name": "createVerifier",
+      "description": "Create a deterministic provider fixture that models only verified outcomes and stable failures.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts",
+        "line": 9,
+        "column": 7
+      }
+    },
+    {
+      "name": "resolveCaller",
+      "description": "Model provider-owned verification without allowing the server boundary to echo credential material.",
+      "see": [],
+      "security": [],
+      "sourceLocation": {
+        "filePath": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts",
+        "line": 14,
+        "column": 7
+      }
     }
   ],
   "sequenceScenarios": [],
@@ -796,6 +987,11 @@
       },
       {
         "fromPath": "src/index.ts",
+        "toPath": "src/features/auth/ports/serverCallerAuthenticationPort.ts",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/index.ts",
         "toPath": "src/persistence.ts",
         "sourcePath": "src/index.ts"
       },
@@ -813,6 +1009,11 @@
         "fromPath": "src/features/auth/ports/persistencePort.test.ts",
         "toPath": "src/persistence.ts",
         "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromPath": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts",
+        "toPath": "src/features/auth/ports/serverCallerAuthenticationPort.ts",
+        "sourcePath": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts"
       }
     ],
     "calls": [
@@ -941,6 +1142,36 @@
         "toSymbol": "consume",
         "callExpression": "persistence.consume",
         "sourcePath": "src/features/auth/ports/persistencePort.test.ts"
+      },
+      {
+        "fromSymbol": "authenticateCaller",
+        "toSymbol": "resolveCaller",
+        "callExpression": "resolveCaller",
+        "sourcePath": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts",
+        "toSymbol": "test",
+        "callExpression": "test",
+        "sourcePath": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts",
+        "toSymbol": "createVerifier",
+        "callExpression": "createVerifier",
+        "sourcePath": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts"
+      },
+      {
+        "fromSymbol": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts",
+        "toSymbol": "authenticateCaller",
+        "callExpression": "verifier.authenticateCaller",
+        "sourcePath": "src/features/auth/ports/serverCallerAuthenticationPort.test.ts"
       }
     ],
     "typeReferences": [
@@ -1003,6 +1234,21 @@
         "fromSymbol": "AuthPort",
         "toType": "VerifyOtpInput",
         "sourcePath": "src/features/auth/ports/authPort.ts"
+      },
+      {
+        "fromSymbol": "ServerCallerAuthenticationPort",
+        "toType": "ServerCallerAuthenticationInput",
+        "sourcePath": "src/features/auth/ports/serverCallerAuthenticationPort.ts"
+      },
+      {
+        "fromSymbol": "ServerCallerAuthenticationPort",
+        "toType": "ServerCallerAuthenticationResult",
+        "sourcePath": "src/features/auth/ports/serverCallerAuthenticationPort.ts"
+      },
+      {
+        "fromSymbol": "VerifiedCaller",
+        "toType": "Readonly",
+        "sourcePath": "src/features/auth/ports/serverCallerAuthenticationPort.ts"
       },
       {
         "fromSymbol": "AuthorizationAttempt",
